@@ -37,6 +37,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB9F82jQRgbyl5-Mq6lXFERUFy1SiUcNzw",
+    authDomain: "air-force-rotc-app.firebaseapp.com",
+    databaseURL: "https://air-force-rotc-app.firebaseio.com",
+    projectId: "air-force-rotc-app",
+    storageBucket: "air-force-rotc-app.appspot.com",
+    messagingSenderId: "311597353456"
+  };
+  firebase.initializeApp(config);
+</script>
     <script>
       window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
