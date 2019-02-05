@@ -1,116 +1,148 @@
-  .calendar {
-    display: block;
-    position: relative;
-    width: 100%;
-    background: var(--neutral-color);
-    border: 1px solid var(--border-color);
+/* grid elements-----------------------------*/
+ 
+.row-middle {
+  align-items: center;
+}
+  
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  padding: 2em .5em 0;
+}
+  
+.col-start {
+  justify-content: flex-start;
+  text-align: left;
+}
+  
+.col-center {
+  justify-content: center;
+  text-align: center;
+}
+  
+.col-end {
+  justify-content: flex-end;
+  text-align: right;
+}
+  
+/*-------------------------------------------*/  
+  
+/* header elements---------------------------*/ 
+  
+.header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1em;
+  border-bottom: 1px solid var(--text-color);
   }
   
-  .calendar .header {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 115%;
-    padding: 1.5em 0;
-    border-bottom: 1px solid var(--border-color);
-  }
+.header .icon:hover {
+  transform: scale(1.75);
+  transition: .25s ease-out;
+  color: var(--main-color);
+}
   
-  .calendar .header .icon:hover {
-    transform: scale(1.75);
-    transition: .25s ease-out;
-    color: var(--main-color);
-  }
+.header .icon:first-of-type {
+  margin-left: 1em;
+}
   
-  .calendar .header .icon:first-of-type {
-    margin-left: 1em;
-  }
-  
-  .calendar .header .icon:last-of-type {
-    margin-right: 1em;
-  }
-  
-  .calendar .days {
-    text-transform: uppercase;
-    font-weight: 400;
-    color: var(--text-color);
-    font-size: 70%;
-    padding: .75em 0;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .calendar .body .cell {
-    position: relative;
-    height: 5em;
-    border-right: 1px solid var(--border-color);
-    overflow: hidden;
-    cursor: pointer;
-    background: var(--neutral-color);
-    transition: 0.25s ease-out;
-  }
-  
-  .calendar .body .cell:hover {
-    background: var(--bg-color);
-    transition: 0.5s ease-out;
-  }
-  
-  .calendar .body .selected {
-    border-left: 10px solid transparent;
-    border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
-    border-image-slice: 1;
-  }
-  
-  .calendar .body .row {
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .calendar .body .row:last-child {
-    border-bottom: none;
-  }
-  
-  .calendar .body .cell:last-child {
-    border-right: none;
-  }
-  
-  .calendar .body .cell .number {
-    position: absolute;
-    font-size: 82.5%;
-    line-height: 1;
-    top: .75em;
-    right: .75em;
-    font-weight: 700;
-  }
-  
-  .calendar .body .disabled {
-    color: var(--text-color-light);
-    pointer-events: none;
-  }
-  
-  .calendar .body .cell .bg {
-    font-weight: 700;
-    line-height: 1;
-    color: var(--main-color);
-    opacity: 0;
-    font-size: 8em;
-    position: absolute;
-    top: -.2em;
-    right: -.05em;
-    transition: .25s ease-out;
-    letter-spacing: -.07em;
-  }
-  
-  .calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
-    opacity: 0.05;
-    transition: .5s ease-in;
-  }
-  
-  .calendar .body .col {
-    flex-grow: 0;
-    flex-basis: calc(100%/7);
-    width: calc(100%/7);
-  }
-  
-  /*-------------------------------------------*/
+.header .icon:last-of-type {
+  margin-right: 1em;
+}
 
-  /* apply for canvases narrower than 1200px---*/
+.icon {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+
+/*-------------------------------------------*/ 
+
+/* body elements-----------------------------*/
+
+.body .cell {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  padding-top: calc(100%/7); /* 1:1 cell ratio */
+  transition: 0.25s ease-out;
+  border-right: 1px solid var(--bg-color-med);
+}
+  
+.body .cell:hover {
+  background: var(--bg-color-light);
+  transition: 0.5s ease-out;
+}
+
+.body .selected {
+  display: block;
+  background-color: var(--main-color);
+  color: var(--bg-color-dark);
+}
+  
+.body .row {
+  border-bottom: 1px solid var(--bg-color-med);
+}
+  
+.body .row:last-child {
+  border-bottom: none;
+}
+  
+.body .cell:last-child {
+  border-right: none;
+}
+  
+.body .cell .number {
+  position: absolute;
+  font-size: .75em;
+  line-height: 1;
+  font-weight: 700;
+  top: .5em;
+  right: .5em;
+}
+  
+.body .disabled {
+  color: var(--bg-color-dark);
+  pointer-events: none;
+}
+  
+.body .col {
+  flex-grow: 0;
+  flex-basis: calc(100%/7);
+  width: calc(100%/7);
+}
+
+/*-------------------------------------------*/ 
+
+/* days elements-----------------------------*/ 
+  
+.calendar .days {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: .75em;
+  color: var(--text-color);
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--bg-color-med);
+}
+  
+/*-------------------------------------------*/
+
+/* apply for canvases narrower than 1200px---*/
 @media only screen and (max-width: 1199px) {
 
 
