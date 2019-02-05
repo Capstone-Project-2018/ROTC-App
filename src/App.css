@@ -1,64 +1,312 @@
+/*  
+    Bootstrap Screen Sizes
+    xs (for phones - screens less than 768px wide)
+    sm (for tablets - screens equal to or greater than 768px wide)
+    md (for small laptops - screens equal to or greater than 992px wide)
+    lg (for laptops and desktops - screens equal to or greater than 1200px wide)
 /*
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}*/
 
+/* variables---------------------------------*/
 
-.icon {
-  font-family: 'Material Icons', serif;
-  font-style: normal;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
+:root {
+  --main-color: #333A56;
+  --secondary-color: #52658F;
+  --text-color-dark: black;
+  --text-color-light: #F5F5F5;
+  --bg-color-light: #F5F5F5;
+  --bg-color-med: #EEEEEE;
+  --bg-color-dark: #E0E0E0;
+  --shadow-color: #212121;
 }
 
-
-/* GENERAL */
-
-* {
-  box-sizing: border-box;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
+
+/*-------------------------------------------*/
+
+/* tag formatting----------------------------*/
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--text-color);
-    background: var(--bg-color);
-    position: relative;
+  font-size: 16px;
+  background-color: var(--bg-color-dark);  
+  font-family:'Montserrat', sans-serif;
 }
 
-/*
-header {
-  display: block;
+a {
+  position: relative;
+  font-family:'Montserrat', sans-serif;
+  font-size: 1em;
+}
+
+/*-------------------------------------------*/
+
+/* bootstrap elements------------------------*/
+
+.container-fluid {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  padding: 1.75em 0;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--neutral-color);
 }
-*/
 
-main {
-  display: block;
-  margin: 0 auto;
-  margin-top: 5em;
-  max-width: 50em;
+/*-------------------------------------------*/
+
+/* header elements---------------------------*/
+
+.top {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  box-shadow: 0 0 .5em 0 var(--shadow-color);
+  z-index: 100;
 }
+
+#header {
+  width: 100%;
+  padding: 3em 2em 1em;
+  background-color: var(--main-color);
+}
+
+.AF-insignia {
+  float: left;
+  height: 6em;
+  padding-right: 1em;
+}
+
+.head {
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: .0415em;
+  color: var(--text-color-light);
+}
+
+.sub-head {
+  font-size: 1em;
+  font-weight: 300;
+  letter-spacing: .083em;
+  color: var(--text-color-light);
+}
+
+#buttons {
+  float: right;
+}
+
+.calendar-btn, .recruitment-btn {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: .094em;
+  color: var(--text-color-light);
+  padding: .33em .66em;
+  margin-left: 1em;
+  border: 1px solid var(--text-color-light);
+  border-radius: .5em;
+}
+
+.calendar-btn:hover, .recruitment-btn:hover {
+  text-decoration: none;
+  color: var(--text-color-dark);
+  background-color: var(--bg-color-dark);
+  transition: 0.25s ease-out;
+}
+
+.calendar-btn {
+  margin-bottom: 1em;
+  display: none;
+}
+
+.calendar-icon-btn, .menu-icon-btn {
+  display: none;
+}
+
+/*-------------------------------------------*/
+
+/* navigation elements-----------------------*/
+
+#nav {
+  width: 100%;
+  padding: .5em 2em .5em;
+  background-color: var(--bg-color-light);
+  z-index: 90;
+}
+
+.nav-item {
+  font-size: 1em;
+  font-weight: 300;
+  letter-spacing: .083em;
+  color: var(--text-color-dark);
+  padding-right: 1.5em;
+}
+
+.nav-item.recruitment {
+  display: none;
+}
+
+.nav-item:hover {
+  text-decoration: none;
+  color: var(--text-color-dark);
+}
+
+/*-------------------------------------------*/
+
+/* page content elements---------------------*/
+
+.content {
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.gallery img {
+  width: 100%;
+}
+
+#text-content {
+  margin: 2em 2em;
+}
+
+.text-head {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: .0415em;
+  margin-bottom: .5em;
+}
+
+.text-body {
+  font-family:'Merriweather', serif;
+  font-weight: 300;
+  font-size: .875em;
+  line-height: 2em;
+  margin-bottom: 2em;
+}
+
+/*-------------------------------------------*/
+
+/* calendar elements-------------------------*/
+
+.calendar-div {
+  padding: 1em;
+  min-height: 100%;
+  bottom: 0;
+  background-color: var(--bg-color-med);
+  /*box-shadow: 0 0 .25em 0 var(--shadow-color);*/
+  z-index: 80;
+}
+
+/*-------------------------------------------*/
+
+/* apply for canvases narrower than 1200px---*/
+@media only screen and (max-width: 1199px) {
+
+
+}
+
+/*-------------------------------------------*/
+
+/* apply for canvases narrower than 992px---*/
+@media only screen and (max-width: 991px) {
+
+  .calendar-btn {
+    display: block;
+  }
+
+  .calendar-div {
+    display: none;
+  }
+
+}
+
+/*-------------------------------------------*/
+
+/* apply for canvases narrower than 768px---*/
+@media only screen and (max-width: 767px) {
+  
+  #header {
+    padding: 1.5em 1.5em 1em;
+    background-color: var(--main-color);
+  }
+
+  .AF-insignia {
+    float: left;
+    height: 4em;
+  }
+  
+  .head {
+    font-size: 2em;
+    letter-spacing: .0274em;
+  }
+  
+  .sub-head {
+    font-size: .66em;
+    letter-spacing: .055em;
+  }
+
+  #nav {
+    display: none;
+  }
+
+  .calendar-btn {
+    display: none;
+  }
+
+  .recruitment-btn {
+    display: none;
+  }
+
+  .calendar-icon-btn, .menu-icon-btn {
+    display: inline-block;
+    font-family: 'Material Icons', serif;
+    font-style: normal;
+    text-align: center;
+    font-size: 2em;
+    color: var(--text-color-light);
+    height: 2em;
+    width: 2em;
+    padding-top: .25em;
+    background-color: var(--secondary-color);
+    border-radius: 2em;
+    box-shadow: 0 0 .25em 0 var(--shadow-color);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+  }
+
+  .calendar-icon-btn:hover, .menu-icon-btn:hover {
+    background-color: var(--main-color);
+  }
+
+  .calendar-icon-btn {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+  }
+
+  .menu-icon-btn {
+    position: fixed;
+    bottom: 4em;
+    right: 1em;
+  }
+
+}
+
+/*-------------------------------------------*/
+
+/* iPhone, Android devices-------------------*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  
+}
+
+/*-------------------------------------------*/
