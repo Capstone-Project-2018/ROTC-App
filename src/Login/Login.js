@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import firebase from 'firebase';
+import 'bootstrap/dist/css/bootstrap.css'
 
 export default class Login extends Component {
     constructor(props) {
@@ -10,6 +12,9 @@ export default class Login extends Component {
         email: "",
         password: ""
       };
+      //from kyles code
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
   
     validateForm() {
@@ -24,7 +29,21 @@ export default class Login extends Component {
   
     handleSubmit = event => {
       event.preventDefault();
-    }
+      var db = firebase.firestore();
+      console.log(db);
+      console.log("database:")
+      db.collection("events").add({
+        email: this.state.email,
+        password: this.state.password,
+      }).then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+      console.log("yet");
+        //event.preventDefault();
+      }
   
     render() {
       return (
