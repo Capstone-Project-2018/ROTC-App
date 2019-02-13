@@ -2,20 +2,10 @@ import React, { Component } from 'react';
 import logo from './af_insignia.png';
 import gallery from './thunderhawgsontherun.jpg';
 import Calendar from './components/Calendar'; 
-import firebase from './firebase';
 import './App.css';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  componentDidMount() {
-  }
-
+  
   render() {
     return (
       <body class="container-fluid App">

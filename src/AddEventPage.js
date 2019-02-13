@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
+import firebase from './firebase';
 
 class AddEventPage extends Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class AddEventPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.db.collection("events").add({
+    var db = firebase.firestore();
+    db.collection("events").add({
       eventName: this.state.eventName,
       eventLocation: this.state.eventLocation,
       eventDescription: this.state.eventDescription,

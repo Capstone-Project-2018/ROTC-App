@@ -1,6 +1,8 @@
 import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
+import firebase from '../firebase';
+import { format } from "path";
 
 class Calendar extends React.Component {
   
@@ -97,6 +99,17 @@ class Calendar extends React.Component {
   onDateClick = day => {
     this.setState ({
       selectedDate: day
+    });
+    var db = firebase.firestore();
+    db.collection("events").where("eventStart", "==", day)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id, "=> ", doc.data())
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
     });
   };
 
