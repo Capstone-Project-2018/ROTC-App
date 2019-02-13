@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import logo from './af_insignia.png';
 import gallery from './thunderhawgsontherun.jpg';
-import Calendar from './components/Calendar';
+import Calendar from './components/Calendar'; 
 import './App.css';
 
 class App extends Component {
+  
   render() {
     return (
       <body class="container-fluid App">

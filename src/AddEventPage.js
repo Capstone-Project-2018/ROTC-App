@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
-import firebase from 'firebase';
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
+import firebase from './firebase';
 
 class AddEventPage extends Component {
   constructor(props) {
@@ -33,12 +33,6 @@ class AddEventPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const config = {
-      apiKey: " AIzaSyB9F82jQRgbyl5-Mq6lXFERUFy1SiUcNzw ",
-      authDomain: "air-force-rotc-app.firebaseapp.com",
-      projectId: "air-force-rotc-app",
-    };
-    firebase.initializeApp(config); 
     var db = firebase.firestore();
     db.collection("events").add({
       eventName: this.state.eventName,
@@ -51,7 +45,7 @@ class AddEventPage extends Component {
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
-    });
+    })
   }
 
   render() {
@@ -91,4 +85,4 @@ class AddEventPage extends Component {
   }
 }
 
-export default App;
+//export default App;
