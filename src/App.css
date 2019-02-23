@@ -11,7 +11,7 @@
 :root {
   --main-color: #333A56;
   --secondary-color: #52658F;
-  --text-color-dark: #212121;
+  --text-color-dark: black;
   --text-color-light: #F5F5F5;
   --bg-color-light: #F5F5F5;
   --bg-color-med: #EEEEEE;
@@ -30,7 +30,7 @@ code {
 
 body {
   font-size: 16px;
-  background-color: var(--bg-color-med);  
+  background-color: var(--bg-color-dark);  
   font-family:'Montserrat', sans-serif;
 }
 
@@ -74,27 +74,27 @@ a {
 
 #header {
   width: 100%;
-  padding: 2em 1em .75em;
+  padding: 3em 2em 1em;
   background-color: var(--main-color);
 }
 
 .AF-insignia {
   float: left;
-  height: 5em;
+  height: 6em;
   padding-right: 1em;
 }
 
 .head {
-  font-size: 2.4em;
+  font-size: 3em;
   font-weight: 500;
-  letter-spacing: .03em;
+  letter-spacing: .0415em;
   color: var(--text-color-light);
 }
 
 .sub-head {
-  font-size: .8em;
+  font-size: 1em;
   font-weight: 300;
-  letter-spacing: .09em;
+  letter-spacing: .083em;
   color: var(--text-color-light);
 }
 
@@ -102,33 +102,27 @@ a {
   float: right;
 }
 
-.calendar-btn {
-  float: right;
-  margin-top: 3em;
+.calendar-btn, .recruitment-btn {
   text-align: center;
-  font-size: .8em;
+  font-size: 1em;
   font-weight: 500;
-  letter-spacing: .135em;
+  letter-spacing: .094em;
   color: var(--text-color-light);
   padding: .33em .66em;
   margin-left: 1em;
-  background-color: transparent;
   border: 1px solid var(--text-color-light);
   border-radius: .5em;
 }
 
-.calendar-btn:hover {
+.calendar-btn:hover, .recruitment-btn:hover {
   text-decoration: none;
   color: var(--text-color-dark);
   background-color: var(--bg-color-dark);
   transition: 0.25s ease-out;
 }
 
-.calendar-btn:focus {
-  outline: 0;
-}
-
 .calendar-btn {
+  margin-bottom: 1em;
   display: none;
 }
 
@@ -142,15 +136,15 @@ a {
 
 #nav {
   width: 100%;
-  padding: .25em 2em .25em 1em;
+  padding: .5em 2em .5em;
   background-color: var(--bg-color-light);
   z-index: 90;
 }
 
 .nav-item {
-  font-size: .8em;
+  font-size: 1em;
   font-weight: 300;
-  letter-spacing: .09em;
+  letter-spacing: .083em;
   color: var(--text-color-dark);
   padding-right: 1.5em;
 }
@@ -169,17 +163,17 @@ a {
 /* page content elements---------------------*/
 
 .content {
-  padding: 1em;
+  margin: 0;
+  padding: 0;
   z-index: 0;
 }
 
 .gallery img {
   width: 100%;
-  margin-bottom: 1em;
 }
 
 #text-content {
-  margin: 1em;
+  margin: 2em 2em;
 }
 
 .text-head {
@@ -203,13 +197,10 @@ a {
 
 .calendar-div {
   padding: 1em;
-  padding-left: 0;
-}
-.calendar-main {
-  padding: 2em;
   min-height: 100%;
   bottom: 0;
-  background-color: var(--bg-color-dark);
+  background-color: var(--bg-color-med);
+  /*box-shadow: 0 0 .25em 0 var(--shadow-color);*/
   z-index: 80;
 }
 
@@ -231,12 +222,7 @@ a {
   }
 
   .calendar-div {
-    position: absolute;
-    right: 1em;
-    top: 8em;
-    width: 50%;
-    opacity: .95;
-    height: 100%;
+    display: none;
   }
 
 }
@@ -274,20 +260,11 @@ a {
     display: none;
   }
 
-  .menu-icon-btn {
-    display: block;
-    font-family: 'Material Icons', serif;
-    font-style: normal;
-    font-size: 2em;
-    color: var(--text-color-light);
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'liga';
+  .recruitment-btn {
+    display: none;
   }
 
-  .calendar-icon-btn {
+  .calendar-icon-btn, .menu-icon-btn {
     display: inline-block;
     font-family: 'Material Icons', serif;
     font-style: normal;
@@ -307,7 +284,7 @@ a {
     font-feature-settings: 'liga';
   }
 
-  .calendar-icon-btn:hover {
+  .calendar-icon-btn:hover, .menu-icon-btn:hover {
     background-color: var(--main-color);
   }
 
@@ -317,14 +294,10 @@ a {
     right: 1em;
   }
 
-  .calendar-div {
-    position: absolute;
-    padding: 0;
-    right: 5%;
-    top: 6em;
-    width: 90%;
-    opacity: .95;
-    height: 100%;
+  .menu-icon-btn {
+    position: fixed;
+    bottom: 4em;
+    right: 1em;
   }
 
 }

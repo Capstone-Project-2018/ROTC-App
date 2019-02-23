@@ -6,13 +6,10 @@ import { format } from "path";
 
 class Calendar extends React.Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentMonth: new Date(),
-      selectedDate: new Date()
-    };
-  }
+  state = {
+    currentMonth: new Date(),
+    selectedDate: new Date()
+  };
 
   renderHeader() {
     
@@ -93,40 +90,26 @@ class Calendar extends React.Component {
       );
 
       days = [];
+
     }
 
     return <div className="body">{rows}</div>;
   }
 
-  renderEvents() {
-
-    var db = firebase.firestore();
-    var eventDescription;
-    db.collection("events")
-    .where("eventStart", "==", this.state.selectedDate)
-    .get()
-    .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        console.log(doc.id, "=> ", doc.data());
-        this.eventDescription = doc.data()['eventDescription'];
-      });
-      /*console.log(eventDescription);*/
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-    console.log(eventDescription);
-    return (
-      <div>
-        <span className="event">{eventDescription}</span>
-      </div>
-    );
-
-  };
-
   onDateClick = day => {
     this.setState ({
       selectedDate: day
+    });
+    var db = firebase.firestore();
+    db.collection("events").where("eventStart", "==", day)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id, "=> ", doc.data())
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
     });
   };
 
@@ -149,7 +132,6 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-        {this.renderEvents()}
       </div>
     );
   }
