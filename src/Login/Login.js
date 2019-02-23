@@ -1,60 +1,53 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import firebase from '../firebase.js';
 import "./Login.css";
-import firebase from 'firebase';
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default class Login extends Component {
     constructor(props) {
       super(props);
   
       this.state = {
-        email: "",
+        username: "",
         password: ""
       };
-      //from kyles code
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
-  
+
     validateForm() {
-      return this.state.email.length > 0 && this.state.password.length > 0;
+      return this.state.username.length > 0 && this.state.password.length > 0;
     }
-  
+
     handleChange = event => {
       this.setState({
         [event.target.id]: event.target.value
       });
+      //console.log(this.state.username); // 0
     }
   
     handleSubmit = event => {
       event.preventDefault();
-      var db = firebase.firestore();
-      console.log(db);
-      console.log("database:")
-      db.collection("events").add({
-        email: this.state.email,
-        password: this.state.password,
-      }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
+    }
+
+    signUpSubmit = event => {
+      firebase.auth().signInWithEmailAndPassword(this.username, this.password).catch(function(error) {
+        // Handle Errors here.
+        console.log("working");
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
       });
-      console.log("yet");
-        //event.preventDefault();
-      }
-  
+    }
+
     render() {
       return (
         <div className="Login">
           <form onSubmit={this.handleSubmit}>
-            <FormGroup controlId="email" bsSize="large">
-              <ControlLabel>Email</ControlLabel>
+            <FormGroup controlId="username" bsSize="large">
+              <ControlLabel>Username</ControlLabel>
               <FormControl
                 autoFocus
-                type="email"
-                value={this.state.email}
+                type="username"
+                value={this.state.username}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -67,15 +60,58 @@ export default class Login extends Component {
               />
             </FormGroup>
             <Button
-              block
+              className="loginButton"
               bsSize="large"
-              disabled={!this.validateForm()}
-              type="submit"
+              onClick={this.handleChange}
+              //disabled={!this.validateForm()}
             >
               Login
             </Button>
           </form>
+
+          <div className="loggedIn">
+            <h3>Welcome User.</h3>
+            <p>You are currently logged in</p>
+            <Button>Logout</Button>
+          </div>
+
+          <div className="signUp">
+              <h3>Don't have an account yet?</h3>
+              <p>Sign up here</p>
+              <FormGroup controlId="username" bsSize="large">
+              <ControlLabel>Username</ControlLabel>
+              <FormControl
+                autoFocus
+                type="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup controlId="password" bsSize="large">
+              <ControlLabel>Password</ControlLabel>
+              <FormControl
+                value={this.state.password}
+                onChange={this.handleChange}
+                type="password"
+              />
+            </FormGroup>
+            <Button
+              className="signUpButton"
+              bsSize="large"
+              onClick={this.signUpSubmit}
+
+              //disabled={!this.validateForm()}
+            >
+              Sign Up
+            </Button>
+          </div>
+
+          <div className="recoverPassword">
+            <p>Click on this to recover password</p>
+          </div>
+
         </div>
+
       );
     }
   }
