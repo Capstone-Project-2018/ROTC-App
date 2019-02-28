@@ -10,7 +10,8 @@ class Calendar extends React.Component {
     super(props);
     this.state = {
       currentMonth: new Date(),
-      selectedDate: new Date()
+      selectedDate: new Date(),
+      events: [],
     };
   }
 
@@ -98,30 +99,29 @@ class Calendar extends React.Component {
     return <div className="body">{rows}</div>;
   }
 
-  renderEvents() {
-
+  renderEvents = () => {
     var db = firebase.firestore();
-    var eventDescription;
+    var events = [];
     db.collection("events")
     .where("eventStart", "==", this.state.selectedDate)
     .get()
-    .then(function(querySnapshot) {
+    .then((querySnapshot) => {
       querySnapshot.forEach(function(doc) {
-        console.log(doc.id, "=> ", doc.data());
-        this.eventDescription = doc.data()['eventDescription'];
+        //console.log(doc.id, "=> ", doc.data());
+        events.push(doc.data()['eventName'])
       });
-      /*console.log(eventDescription);*/
+      this.setState({
+        events: events
+      })
     })
     .catch(function(error) {
       console.log(error);
     });
-    console.log(eventDescription);
     return (
       <div>
-        <span className="event">{eventDescription}</span>
+        <span className="event">{this.state.events}</span>
       </div>
     );
-
   };
 
   onDateClick = day => {
@@ -143,7 +143,6 @@ class Calendar extends React.Component {
   };
 
   render() {
-
     return (
       <div className="calendar">
         {this.renderHeader()}
