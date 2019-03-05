@@ -2,6 +2,7 @@ import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
 import firebase from '../firebase';
+import Event from './Event';
 
 class Calendar extends React.Component {
   
@@ -98,15 +99,17 @@ class Calendar extends React.Component {
     return <div className="body">{rows}</div>;
   }
 
-  renderEvents = () => {
+  renderEvents = (day) => {
     var db = firebase.firestore();
     var events = [];
+
     db.collection("events")
-    .where("eventStart", "==", this.state.selectedDate)
+    .where("eventStart", "==", day)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach(function(doc) {
         //console.log(doc.id, "=> ", doc.data());
+    
         events.push(doc.data()['eventName'])
       });
       this.setState({
@@ -116,14 +119,31 @@ class Calendar extends React.Component {
     .catch(function(error) {
       console.log(error);
     });
-    return (
-      <div>
-        <span className="event">{this.state.events}</span>
-      </div>
-    );
   };
 
+  renderToday = () => {
+    var db = firebase.firestore();
+    var events = [];
+    db.collection("events")
+    .where("eventStart", "==", dateFns.startOfToday())
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id, "=> ", doc.data());
+        console.log(doc.data())
+        events.push(doc.data()['eventName'])
+      });
+      this.setState({
+        events: events
+      })
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+
   onDateClick = day => {
+    this.renderEvents(day)
     this.setState ({
       selectedDate: day
     });
@@ -141,13 +161,23 @@ class Calendar extends React.Component {
     });
   };
 
+  componentDidMount() {
+    this.renderToday()
+  }
+
   render() {
+    const events = this.state.events.map((item, i) => 
+      <div key={i}>
+        <h1>{item}</h1>
+      </div>
+    );
+
     return (
       <div className="calendar">
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-        {this.renderEvents()}
+        {events}
       </div>
     );
   }
