@@ -2,7 +2,6 @@ import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
 import firebase from '../firebase';
-import { format } from "path";
 
 class Calendar extends React.Component {
   

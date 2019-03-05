@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state =  { display: true,
                   };
-    var btnToggle = 'show';
+    //var btnToggle = 'show';
     this.showCalendar = this.showCalendar.bind(this);
   }
 
@@ -49,11 +49,11 @@ class App extends Component {
           </header>
 
           <div id="nav">
-            <a className="nav-item" href="">HOME</a>
-            <a className="nav-item" href="">WHY JOIN?</a>
-            <a className="nav-item" href="">AF ROTC PROGRAM</a>
-            <a className="nav-item" href="">DOCUMENTS</a>
-            <a className="nav-item" href="">RECRUITMENT</a>
+            <a className="nav-item" href="https://air-force-rotc-app.firebaseapp.com/">HOME</a>
+            <a className="nav-item" href="https://air-force-rotc-app.firebaseapp.com/join">WHY JOIN?</a>
+            <a className="nav-item" href="https://air-force-rotc-app.firebaseapp.com/program">AF ROTC PROGRAM</a>
+            <a className="nav-item" href="https://air-force-rotc-app.firebaseapp.com/documents">DOCUMENTS</a>
+            <a className="nav-item" href="https://air-force-rotc-app.firebaseapp.com/recruitment">RECRUITMENT</a>
           </div>
         </div>
 
