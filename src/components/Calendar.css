@@ -8,8 +8,6 @@
   flex-grow: 1;
   flex-basis: 0;
   max-width: 100%;
-  padding: 1em .5em 0;
-  margin-bottom: .25em;
 }
   
 .col-start {
@@ -40,15 +38,7 @@
 .header .icon:hover {
   transform: scale(1.75);
   transition: .25s ease-out;
-  color: var(--main-color);
-}
-  
-.header .icon:first-of-type {
-  margin-left: 1em;
-}
-  
-.header .icon:last-of-type {
-  margin-right: 1em;
+  color: var(--secondary-color-500);
 }
 
 .icon {
@@ -67,6 +57,8 @@
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+
+  cursor: pointer;
 }
 
 
@@ -78,20 +70,19 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  width: 100%;
-  padding-top: calc(100%/7); /* 1:1 cell ratio */
+  padding-top: calc(72%/7); /* 1:1 cell ratio */
   transition: 0.25s ease-out;
+  border-radius: 50%;
 }
   
 .body .cell:hover {
-  background: var(--bg-color-light);
+  background: var(--gray-300);
   transition: 0.5s ease-out;
 }
 
 .body .selected {
-  display: block;
-  background-color: var(--main-color);
-  color: var(--bg-color-light);
+  background-color: var(--secondary-color-500);
+  color: var(--text-light);
 }
   
 .body .cell .number {
@@ -99,18 +90,21 @@
   font-size: .75em;
   line-height: 1;
   font-weight: 700;
-  top: .5em;
-  right: .5em;
+  top: 50%;
+  left:50%;
+  /* translate value for transform is based off the size of the element to position div exactly center */
+  transform: translate(-50%, -50%);
 }
   
 .body .disabled {
-  color: var(--text-color-light);
+  color: var(--gray-400);
   pointer-events: none;
 }
   
 .body .col {
+  margin: 2%;
   flex-grow: 0;
-  flex-basis: calc(100%/7);
+  flex-basis: calc(72%/7);
   width: calc(100%/7);
 }
 
@@ -120,9 +114,28 @@
   
 .calendar .days {
   text-transform: uppercase;
+  text-align: center;
   font-weight: 500;
   font-size: .75em;
-  color: var(--text-color);
+  color: var(--text-dark);
+  padding: 2em 0 1em;
+  border-bottom: 1px solid var(--gray-500);
+}
+  
+/*-------------------------------------------*/
+
+/* events elements---------------------------*/ 
+  
+.events {
+  padding: 2em 1em 2em;
+  border-top: 1px solid var(--gray-500);
+}
+
+.event {
+  font-family:'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1em;
 }
   
 /*-------------------------------------------*/
