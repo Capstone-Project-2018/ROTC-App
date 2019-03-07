@@ -9,14 +9,54 @@
 /* variables---------------------------------*/
 
 :root {
-  --main-color: #333A56;
-  --secondary-color: #52658F;
-  --text-color-dark: #212121;
-  --text-color-light: #F5F5F5;
-  --bg-color-light: #F5F5F5;
-  --bg-color-med: #EEEEEE;
-  --bg-color-dark: #E0E0E0;
-  --shadow-color: #212121;
+  /* primary color == Indigo */
+  --primary-color-50:   #E8EAF6;  /* pair with text-color-dark */
+  --primary-color-100:  #C5CAE9;  /* pair with text-color-dark */
+  --primary-color-200:  #9FA8DA;  /* pair with text-color-dark */
+  --primary-color-300:  #7986CB;  /* pair with text-color-light */
+  --primary-color-400:  #5C6BC0;  /* pair with text-color-light */
+  --primary-color-500:  #3F51B5;  /* pair with text-color-light */
+  --primary-color-600:  #3949AB;  /* pair with text-color-light */
+  --primary-color-700:  #303F9F;  /* pair with text-color-light */
+  --primary-color-800:  #283593;  /* pair with text-color-light */
+  --primary-color-900:  #1A237E;  /* pair with text-color-light */
+  --primary-color-A100: #8C9EFF;  /* pair with text-color-dark */
+  --primary-color-A200: #536DFE;  /* pair with text-color-light */
+  --primary-color-A400: #3D5AFE;  /* pair with text-color-light */
+  --primary-color-A700: #304FFE;  /* pair with text-color-light */
+
+  /* secondary color == Orange */
+  --secondary-color-50:   #FFF3E0;  /* pair with text-color-dark */
+  --secondary-color-100:  #FFE0B2;  /* pair with text-color-dark */
+  --secondary-color-200:  #FFCC80;  /* pair with text-color-dark */
+  --secondary-color-300:  #FFB74D;  /* pair with text-color-dark */
+  --secondary-color-400:  #FFA726;  /* pair with text-color-dark */
+  --secondary-color-500:  #FF9800;  /* pair with text-color-dark */
+  --secondary-color-600:  #FB8C00;  /* pair with text-color-dark */
+  --secondary-color-700:  #F57C00;  /* pair with text-color-dark */
+  --secondary-color-800:  #EF6C00;  /* pair with text-color-dark */
+  --secondary-color-900:  #E65100;  /* pair with text-color-light */
+  --secondary-color-A100: #FFD180;  /* pair with text-color-dark */
+  --secondary-color-A200: #FFAB40;  /* pair with text-color-dark */
+  --secondary-color-A400: #FF9100;  /* pair with text-color-dark */
+  --secondary-color-A700: #FF6D00;  /* pair with text-color-dark */
+
+  /* grays */
+  --gray-50:   #FAFAFA;  /* pair with text-color-dark */
+  --gray-100:  #F5F5F5;  /* pair with text-color-dark */
+  --gray-200:  #EEEEEE;  /* pair with text-color-dark */
+  --gray-300:  #E0E0E0;  /* pair with text-color-dark */
+  --gray-400:  #BDBDBD;  /* pair with text-color-dark */
+  --gray-500:  #9E9E9E;  /* pair with text-color-dark */
+  --gray-600:  #757575;  /* pair with text-color-light */
+  --gray-700:  #616161;  /* pair with text-color-light */
+  --gray-800:  #424242;  /* pair with text-color-light */
+  --gray-900:  #212121;  /* pair with text-color-light */
+  
+  /* text colors */
+  --text-light: #F5F5F5;
+  --text-dark:  #212121;
+
 }
 
 code {
@@ -29,15 +69,15 @@ code {
 /* tag formatting----------------------------*/
 
 body {
-  font-size: 16px;
-  background-color: var(--bg-color-med);  
   font-family:'Montserrat', sans-serif;
+  font-size: 16px;
+
+  background-color: var(--gray-300); 
+  z-index: 0;
 }
 
 a {
   position: relative;
-  font-family:'Montserrat', sans-serif;
-  font-size: 1em;
 }
 
 /*-------------------------------------------*/
@@ -68,72 +108,37 @@ a {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  box-shadow: 0 0 .5em 0 var(--shadow-color);
+  padding: auto;
   z-index: 100;
+  box-shadow: 0 0 .15em 0 var(--gray-600);
 }
 
 #header {
   width: 100%;
-  padding: 2em 1em .75em;
-  background-color: var(--main-color);
+  padding: 1.25em 2em 0;
+  background-color: var(--primary-color-900);
 }
 
 .AF-insignia {
   float: left;
-  height: 5em;
+  height: 4em;
   padding-right: 1em;
-}
-
-.head {
-  font-size: 2.4em;
-  font-weight: 500;
-  letter-spacing: .03em;
-  color: var(--text-color-light);
+  margin-bottom: .5em;
 }
 
 .sub-head {
   font-size: .8em;
   font-weight: 300;
   letter-spacing: .09em;
-  color: var(--text-color-light);
+  color: var(--text-light);
 }
 
-#buttons {
-  float: right;
-}
-
-.calendar-btn {
-  float: right;
-  margin-top: 3em;
-  text-align: center;
-  font-size: .8em;
+.head {
+  font-size: 2em;
   font-weight: 500;
-  letter-spacing: .135em;
-  color: var(--text-color-light);
-  padding: .33em .66em;
-  margin-left: 1em;
-  background-color: transparent;
-  border: 1px solid var(--text-color-light);
-  border-radius: .5em;
-}
-
-.calendar-btn:hover {
-  text-decoration: none;
-  color: var(--text-color-dark);
-  background-color: var(--bg-color-dark);
-  transition: 0.25s ease-out;
-}
-
-.calendar-btn:focus {
-  outline: 0;
-}
-
-.calendar-btn {
-  display: none;
-}
-
-.calendar-icon-btn, .menu-icon-btn {
-  display: none;
+  letter-spacing: .03em;
+  color: var(--text-light);
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------*/
@@ -142,26 +147,103 @@ a {
 
 #nav {
   width: 100%;
-  padding: .25em 2em .25em 1em;
-  background-color: var(--bg-color-light);
-  z-index: 90;
+  padding: .25em 2em .25em 2em;
+  background-color: var(--gray-50);
+  z-index: 100;
 }
 
 .nav-item {
   font-size: .8em;
   font-weight: 300;
   letter-spacing: .09em;
-  color: var(--text-color-dark);
+  color: var(--text-dark);
   padding-right: 1.5em;
-}
-
-.nav-item.recruitment {
-  display: none;
+  cursor: pointer;
 }
 
 .nav-item:hover {
   text-decoration: none;
-  color: var(--text-color-dark);
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.menu-icon, .calendar-icon {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  text-align: center;
+  font-size: 1.75em;
+  color: var(--text-light);
+  position: fixed;
+  z-index: 110;
+  top: 1em;
+  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+
+  cursor: pointer;
+  display: none;
+}
+
+.menu-icon:hover, .calendar-icon:hover {
+  color: var(--secondary-color-500);
+}
+
+.menu-icon {
+  right: 3em;
+}
+
+.calendar-icon {
+  right: 1em;
+  border-left: 1px solid var(--text-light);
+  height: 1.5em;
+  padding-left: .5em;
+}
+
+/*-------------------------------------------*/
+
+/* calendar elements-------------------------*/
+
+.calendar-btn {
+  font-size: .8em;
+  font-weight: 500;
+  letter-spacing: .09em;
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  width: 10em;
+  background-color: var(--gray-50);
+  color: var(--text-dark);;
+  padding: .75em 1em;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.calendar-btn:hover {
+  text-decoration: none;
+  color: var(--text-light);
+  background-color: var(--secondary-color-500);
+  transition: 0.25s ease-out;
+  opacity: 1;
+}
+
+.calendar-btn:focus {
+  outline: 0;
+}
+
+.calendar-div {
+  position: fixed;
+  top: 7em;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--gray-100);
+  z-index: 50;
+  padding: 3em 2em;
+  min-width: 500px;
+  box-shadow: 0 0 .15em 0 var(--gray-600);
 }
 
 /*-------------------------------------------*/
@@ -169,8 +251,9 @@ a {
 /* page content elements---------------------*/
 
 .content {
-  padding: 1em;
-  z-index: 0;
+  margin: auto;
+  padding: 0 1em 2em;
+  z-index: 10;
 }
 
 .gallery img {
@@ -199,18 +282,34 @@ a {
 
 /*-------------------------------------------*/
 
-/* calendar elements-------------------------*/
+/* login elements----------------------------*/
 
-.calendar-div {
-  padding: 1em;
-  padding-left: 0;
+.login-popup {
+  position: fixed;
+  top: 50%;
+  left:50%;
+  /* translate value for transform is based off the size of the element to position div exactly center */
+  transform: translate(-50%, -50%);
+  padding: 5em 3.5em;
+  z-index: 200;
+  background: var(--gray-50);
+  box-shadow: 0 0 .15em 0 var(--gray-600);
 }
-.calendar-main {
-  padding: 2em;
-  min-height: 100%;
-  bottom: 0;
-  background-color: var(--bg-color-dark);
-  z-index: 80;
+
+.login-clear {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  font-size: 1.25em;
+  color: var(--text-dark);
+  position: fixed;
+  top: 1.25em;
+  right: 1.5em;
+
+  cursor: pointer;
+}
+
+.login-clear:hover {
+  color: var(--secondary-color-500);
 }
 
 /*-------------------------------------------*/
@@ -226,45 +325,12 @@ a {
 /* apply for canvases narrower than 992px---*/
 @media only screen and (max-width: 991px) {
 
-  .calendar-btn {
-    display: block;
-  }
-
-  .calendar-div {
-    position: absolute;
-    right: 1em;
-    top: 8em;
-    width: 50%;
-    opacity: .95;
-    height: 100%;
-  }
-
 }
 
 /*-------------------------------------------*/
 
 /* apply for canvases narrower than 768px---*/
 @media only screen and (max-width: 767px) {
-  
-  #header {
-    padding: 1.5em 1.5em 1em;
-    background-color: var(--main-color);
-  }
-
-  .AF-insignia {
-    float: left;
-    height: 4em;
-  }
-  
-  .head {
-    font-size: 2em;
-    letter-spacing: .0274em;
-  }
-  
-  .sub-head {
-    font-size: .66em;
-    letter-spacing: .055em;
-  }
 
   #nav {
     display: none;
@@ -274,57 +340,21 @@ a {
     display: none;
   }
 
-  .menu-icon-btn {
+  .menu-icon {
     display: block;
-    font-family: 'Material Icons', serif;
-    font-style: normal;
-    font-size: 2em;
-    color: var(--text-color-light);
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'liga';
   }
 
-  .calendar-icon-btn {
+  .calendar-icon {
     display: inline-block;
-    font-family: 'Material Icons', serif;
-    font-style: normal;
-    text-align: center;
-    font-size: 2em;
-    color: var(--text-color-light);
-    height: 2em;
-    width: 2em;
-    padding-top: .25em;
-    background-color: var(--secondary-color);
-    border-radius: 2em;
-    box-shadow: 0 0 .25em 0 var(--shadow-color);
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'liga';
   }
 
-  .calendar-icon-btn:hover {
-    background-color: var(--main-color);
-  }
-
-  .calendar-icon-btn {
-    position: fixed;
-    bottom: 1em;
-    right: 1em;
+  .calendar-icon:hover {
+    background-color: var(--primary-color-900);
   }
 
   .calendar-div {
-    position: absolute;
-    padding: 0;
-    right: 5%;
-    top: 6em;
     width: 90%;
-    opacity: .95;
-    height: 100%;
+    max-width: 500px;
   }
 
 }
