@@ -21,13 +21,13 @@ class Calendar extends React.Component {
 
     return (
       <div className="header row flex-middle">
-        <div className="col col-start">
+        <div className="col-8 col-start">
+        <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+        </div>
+        <div className="col-2 col-center">
           <div className="icon" onClick={this.prevMonth}>chevron_left</div>
         </div>
-        <div className="col col-center">
-          <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
-        </div>
-        <div className="col col-end">
+        <div className="col-2 col-end">
           <div className="icon" onClick={this.nextMonth}>chevron_right</div>
         </div>
       </div>
@@ -102,14 +102,11 @@ class Calendar extends React.Component {
   renderEvents = (day) => {
     var db = firebase.firestore();
     var events = [];
-
     db.collection("events")
     .where("eventStart", "==", day)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach(function(doc) {
-        //console.log(doc.id, "=> ", doc.data());
-    
         events.push(doc.data()['eventName'])
       });
       this.setState({
@@ -167,8 +164,8 @@ class Calendar extends React.Component {
 
   render() {
     const events = this.state.events.map((item, i) => 
-      <div key={i}>
-        <h1>{item}</h1>
+      <div className="events" key={i}>
+        <h1 className="event">{item}</h1>
       </div>
     );
 
