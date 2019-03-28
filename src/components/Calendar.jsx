@@ -99,14 +99,22 @@ class Calendar extends React.Component {
   }
 
   renderEvents = (day) => {
-    var db = firebase.firestore();
     var events = [];
+    var db = firebase.firestore();
     db.collection("events")
-    .where("eventStart", "==", day)
+    .where("eventStart", ">=", dateFns.startOfDay(day)).where("eventStart", "<=", dateFns.endOfDay(day))
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach(function(doc) {
-        events.push(doc.data()['eventName'])
+        var event = {
+          eventName: doc.data()['eventName'].toString(),
+          eventStart: doc.data()['eventStart'].toDate().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+          eventEnd: doc.data()['eventEnd'].toDate().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+          eventDescription: doc.data()['eventDescription'].toString(),
+          eventLocation: doc.data()['eventLocation'].toString(),
+        };
+        console.log(event)
+        events.push(event)
       });
       this.setState({
         events: events
@@ -120,7 +128,6 @@ class Calendar extends React.Component {
   renderToday = () => {
     var events = [];
     var db = firebase.firestore();
-    
     db.collection("events")
     .where("eventStart", ">=", dateFns.startOfToday()).where("eventStart", "<=", dateFns.endOfToday())
     .get()
@@ -154,14 +161,26 @@ class Calendar extends React.Component {
 
   nextMonth = () => {
     this.setState ({
-      currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
-    });
+      currentMonth: dateFns.addMonths(this.state.currentMonth, 1),
+      events: [],
+    }, () => {
+      if (this.state.currentMonth.getMonth() === this.state.selectedDate.getMonth()) {
+        this.renderEvents(this.state.selectedDate);
+      }
+    }
+    );
   };
 
   prevMonth = () => {
     this.setState ({
-      currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
-    });
+      currentMonth: dateFns.subMonths(this.state.currentMonth, 1),
+      events: [],
+    },() => {
+      if (this.state.currentMonth.getMonth() === this.state.selectedDate.getMonth()) {
+        this.renderEvents(this.state.selectedDate);
+      }
+    }
+    );
   };
 
   componentDidMount() {
@@ -174,6 +193,7 @@ class Calendar extends React.Component {
         <h1 className="event">{item.eventName}</h1>
         <p>{item.eventStart + "-" + item.eventEnd}</p>
         <p>{item.eventLocation}</p>
+        <p>{item.eventDescription}</p>
       </div>
     );
 
