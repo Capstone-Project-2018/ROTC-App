@@ -2,7 +2,6 @@ import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
 import firebase from '../firebase';
-import Event from './Event';
 
 class Calendar extends React.Component {
   
@@ -119,16 +118,23 @@ class Calendar extends React.Component {
   };
 
   renderToday = () => {
-    var db = firebase.firestore();
     var events = [];
+    var db = firebase.firestore();
+    
     db.collection("events")
-    .where("eventStart", "==", dateFns.startOfToday())
+    .where("eventStart", ">=", dateFns.startOfToday()).where("eventStart", "<=", dateFns.endOfToday())
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach(function(doc) {
-        console.log(doc.id, "=> ", doc.data());
-        console.log(doc.data())
-        events.push(doc.data()['eventName'])
+        var event = {
+          eventName: doc.data()['eventName'].toString(),
+          eventStart: doc.data()['eventStart'].toDate().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+          eventEnd: doc.data()['eventEnd'].toDate().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+          eventDescription: doc.data()['eventDescription'].toString(),
+          eventLocation: doc.data()['eventLocation'].toString(),
+        };
+        console.log(event)
+        events.push(event)
       });
       this.setState({
         events: events
@@ -165,7 +171,9 @@ class Calendar extends React.Component {
   render() {
     const events = this.state.events.map((item, i) => 
       <div className="events" key={i}>
-        <h1 className="event">{item}</h1>
+        <h1 className="event">{item.eventName}</h1>
+        <p>{item.eventStart + "-" + item.eventEnd}</p>
+        <p>{item.eventLocation}</p>
       </div>
     );
 
