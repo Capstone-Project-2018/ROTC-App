@@ -244,6 +244,7 @@ a {
   padding: 3em 2em;
   min-width: 500px;
   box-shadow: 0 0 .15em 0 var(--gray-600);
+  overflow: scroll;
 }
 
 /*-------------------------------------------*/
