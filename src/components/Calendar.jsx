@@ -190,10 +190,10 @@ class Calendar extends React.Component {
   render() {
     const events = this.state.events.map((item, i) => 
       <div className="events" key={i}>
-        <h1 className="event">{item.eventName}</h1>
-        <p>{item.eventStart + "-" + item.eventEnd}</p>
-        <p>{item.eventLocation}</p>
-        <p>{item.eventDescription}</p>
+        <h1 className="event-name">{item.eventName}</h1>
+        <p className="event-descript">{item.eventDescription}</p>
+        <p className="event-time"><b>Time: </b>{item.eventStart + "-" + item.eventEnd}</p>
+        <p className="event-loc"><b>Location: </b>{item.eventLocation}</p>
       </div>
     );
 
