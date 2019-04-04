@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
-import 'bootstrap/dist/css/bootstrap.css'
-import './App.css';
-import firebase from './firebase';
+import firebase from '../firebase.js';
+import './AddEvent.css';
 
-class AddEventPage extends Component {
+export default class AddEvent extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -50,7 +49,7 @@ class AddEventPage extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="AddEvent">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="eventName">Event Name</label>
@@ -84,5 +83,3 @@ class AddEventPage extends Component {
     );
   }
 }
-
-//export default App;
