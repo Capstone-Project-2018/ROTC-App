@@ -11,6 +11,7 @@
     "popper": "^1.0.1",
     "react": "^16.7.0",
     "react-calendar": "^2.18.1",
+    "react-datetime-picker": "^2.3.0",
     "react-dom": "^16.7.0",
     "react-filepond": "^7.0.1",
     "react-scripts": "^2.1.8"
