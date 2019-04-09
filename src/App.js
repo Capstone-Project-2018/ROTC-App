@@ -11,47 +11,67 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state =  { calendarDisplay: false,
+    this.state =  { calendarDisplay: true,
                     loginDisplay: false,
                     menuDisplay: true,
                     addDocDisplay: false,
                     addEventDisplay: false
                   };
-    this.showCalendar = this.showCalendar.bind(this);
-    this.showLogin = this.showLogin.bind(this);
-    this.showMenu = this.showMenu.bind(this);
-    this.showAddDoc = this.showAddDoc.bind(this);
-    this.showAddEvent = this.showAddEvent.bind(this);
   }
 
-  showCalendar() {
-    this.setState(prevState => 
+  showCalendar = () => {
+    this.setState (prevState => 
         ({calendarDisplay: !prevState.calendarDisplay})
-      );
+    ,() => {
+    this.setState ({
+      loginDisplay: false,
+      addDocDisplay: false,
+      addEventDisplay: false,
+    })
+    }
+    );
+  };
+
+  showLogin = () => {
+    this.setState (prevState => 
+      ({loginDisplay: !prevState.loginDisplay})
+  ,() => {
+  this.setState ({
+    addDocDisplay: false,
+    addEventDisplay: false,
+  })
+  }
+  );
   }
 
-  showLogin() {
-    this.setState(prevState => 
-        ({loginDisplay: !prevState.loginDisplay})
-      );
+  showMenu = () => {
+    this.setState (prevState => 
+      ({showMenu: !prevState.showMenu})
+    );
   }
 
-  showMenu() {
-    this.setState(prevState => 
-        ({menuDisplay: !prevState.menuDisplay})
-      );
+  showAddDoc = () => {
+    this.setState (prevState => 
+      ({addDocDisplay: !prevState.addDocDisplay})
+  ,() => {
+  this.setState ({
+    loginDisplay: false,
+    addEventDisplay: false,
+  })
+  }
+  );
   }
 
-  showAddDoc() {
-    this.setState(prevState => 
-        ({addDocDisplay: !prevState.addDocDisplay})
-      );
+  showAddEvent = () => {
+    this.setState (prevState => 
+      ({addEventDisplay: !prevState.addEventDisplay})
+  ,() => {
+  this.setState ({
+    loginDisplay: false,
+    addDocDisplay: false,
+  })
   }
-
-  showAddEvent() {
-    this.setState(prevState => 
-        ({addEventDisplay: !prevState.addEventDisplay})
-      );
+  );
   }
 
   render() {
