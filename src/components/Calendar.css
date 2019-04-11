@@ -7,12 +7,12 @@
 .col {
   flex-grow: 1;
   flex-basis: 0;
-  max-width: 100%;
 }
   
 .col-start {
   justify-content: flex-start;
   text-align: left;
+  font-size: 1em;
 }
   
 .col-center {
@@ -32,7 +32,7 @@
 .header {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 1.25em;
   }
   
 .header .icon:hover {
@@ -146,13 +146,7 @@
   padding-bottom: 1em;
 }
 
-.event-time {
-  font-size: .75em;
-  font-weight: 300;
-  line-height: .5em;
-}
-
-.event-loc {
+.event-time, .event-loc {
   font-size: .75em;
   font-weight: 300;
   line-height: .5em;
