@@ -42,7 +42,7 @@ export default class Documents extends Component {
         <div key={i}>
           <h2 className="file-name">{item.fileName}</h2>
           <h3 className="file-descript">{item.fileDescript}</h3>
-          <a className="pdf" href={item.fileUrl} rel="noopener noreferrer" target="_blank">PDF</a>
+          <a className="pdf" href={item.fileUrl} rel="noopener noreferrer" target="_blank">view PDF</a>
         </div>
   );
         return(

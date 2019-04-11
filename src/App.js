@@ -22,12 +22,16 @@ class App extends Component {
 
   showCalendar = () => {
     this.setState (prevState => 
-        ({calendarDisplay: !prevState.calendarDisplay}));
+        ({calendarDisplay: !prevState.calendarDisplay}),
+        () => {this.setState ({docsDisplay: false})}
+    );
   };
 
   showDocs = () => {
     this.setState (prevState => 
-        ({docsDisplay: !prevState.docsDisplay}));
+        ({docsDisplay: !prevState.docsDisplay}),
+        () => {this.setState ({calendarDisplay: false})}
+    );
   };
 
   showLogin = () => {

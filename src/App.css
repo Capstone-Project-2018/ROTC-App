@@ -126,7 +126,15 @@ img.AF-insignia {
 }
 
 .right-header {
-  margin: 3em 3em 4em;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  
+  padding-top: 3em;
+  margin: 0 3em;
+  background: var(--gray-100); 
+  
+  z-index: 50;
 }
 
 h1.head {
@@ -143,6 +151,9 @@ h2.sub-head {
   letter-spacing: .09em;
   text-align: left;
   color: var(--text-dark);
+  padding-bottom: 2em;
+
+  border-bottom: 1px solid var(--gray-500);
 }
 
 /*-------------------------------------------*/
@@ -211,10 +222,32 @@ a.nav-item {
   position: fixed;
   top: 0;
   left: 16em;
+  width: 32em;
   height: 100vh;
   padding: 2em 3em;
   background: var(--gray-50);
   box-shadow: 0 0 .15em 0 var(--gray-600);
+  
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 2s;
+  animation-delay: -1s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {left:16em;}
+  50%  {left:-32em;}
+  100% {left:16em;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {left:16em;}
+  50%  {left:-32em;}
+  100% {left:16em;}
 }
 
 .clear {

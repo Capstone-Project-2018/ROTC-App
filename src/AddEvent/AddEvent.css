@@ -1,0 +1,36 @@
+.AddEvent {
+    font-family:'Montserrat', sans-serif;
+    font-size: 16px;
+    font-size: .8em;
+    letter-spacing: .09em;
+  }
+  
+  .form-group {
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .form-group {
+    font-weight: 300;
+    width: 100%;
+    padding: .75em 1em;
+    display: inline-block;
+    margin: .25em 0 2em;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+button {
+    background-color: var(--secondary-color-500);
+    color: white;
+    padding: 14px 20px;
+    margin: 0 0 .75em 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+button:hover {
+    opacity: 0.8;
+  }
