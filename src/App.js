@@ -48,7 +48,7 @@ class App extends Component {
 
   showMenu = () => {
     this.setState (prevState => 
-      ({showMenu: !prevState.showMenu})
+      ({menuDisplay: !prevState.menuDisplay})
     );
   }
 
@@ -83,7 +83,9 @@ class App extends Component {
         <div className="row">
           <div className="left-content">
             <header className="left-header">
-              <img src={logo} className="col-12 AF-insignia" alt="Air Force Insignia" />
+              <div className="logo-div">
+                <img src={logo} className="col-12 AF-insignia" alt="Air Force Insignia" />
+              </div>
             </header>
 
             <div className="menu-icon" onClick={this.showMenu}>reorder</div>
