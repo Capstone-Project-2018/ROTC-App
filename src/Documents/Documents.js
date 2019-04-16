@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
-import 'bootstrap/dist/css/bootstrap.css'
-import './App.css';
-import logo from './pdf-file.png';
+import firebase from '../firebase';
+import './Documents.css';
 
-class Documents extends Component {
+export default class Documents extends Component {
 
     constructor() {
         super();
@@ -24,6 +22,7 @@ class Documents extends Component {
                 var file = {
                     fileName: doc.data()['fileName'],
                     fileUrl: doc.data()['fileUrl'],
+                    fileDescript: doc.data()['fileDescript']
                 };
                 console.log(file);
                 files.push(file);
@@ -41,13 +40,17 @@ class Documents extends Component {
     render() {
         const files = this.state.files.map((item, i) => 
         <div key={i}>
-          <img src={logo} alt="PDF"/>
-          <a href={item.fileUrl} rel="noopener noreferrer" target="_blank">{item.fileName}</a>
+          <h2 className="file-name">{item.fileName}</h2>
+          <h3 className="file-descript">{item.fileDescript}</h3>
+          <a className="pdf" href={item.fileUrl} rel="noopener noreferrer" target="_blank">view PDF</a>
         </div>
   );
         return(
-            <div>
+            <div className="documents">
+                <h1 className="docs-header">Cadet Documents</h1>
+                <div className="files">
                 {files}
+                </div>
             </div>
         );
     }

@@ -1,121 +1,135 @@
 import React, { Component } from 'react';
 import logo from './af_insignia.png';
-import gallery from './thunderhawgsontherun.jpg';
 import Calendar from './components/Calendar'; 
 import Login from './Login/Login';
 import AddEvent from './AddEvent/AddEvent';
 import DragDrop from './DragDrop/DragDrop';
+import Documents from './Documents/Documents';
 import './App.css';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state =  { calendarDisplay: false,
+    this.state =  { calendarDisplay: true,
+                    docsDisplay: false,
                     loginDisplay: false,
                     menuDisplay: true,
                     addDocDisplay: false,
                     addEventDisplay: false
                   };
-    this.showCalendar = this.showCalendar.bind(this);
-    this.showLogin = this.showLogin.bind(this);
-    this.showMenu = this.showMenu.bind(this);
-    this.showAddDoc = this.showAddDoc.bind(this);
-    this.showAddEvent = this.showAddEvent.bind(this);
   }
 
-  showCalendar() {
-    this.setState(prevState => 
-        ({calendarDisplay: !prevState.calendarDisplay})
-      );
+  showCalendar = () => {
+    this.setState (prevState => 
+        ({calendarDisplay: !prevState.calendarDisplay}),
+        () => {this.setState ({docsDisplay: false})}
+    );
+  };
+
+  showDocs = () => {
+    this.setState (prevState => 
+        ({docsDisplay: !prevState.docsDisplay}),
+        () => {this.setState ({calendarDisplay: false})}
+    );
+  };
+
+  showLogin = () => {
+    this.setState (prevState => 
+      ({loginDisplay: !prevState.loginDisplay})
+  ,() => {
+  this.setState ({
+    addDocDisplay: false,
+    addEventDisplay: false,
+  })
+  }
+  );
   }
 
-  showLogin() {
-    this.setState(prevState => 
-        ({loginDisplay: !prevState.loginDisplay})
-      );
+  showMenu = () => {
+    this.setState (prevState => 
+      ({menuDisplay: !prevState.menuDisplay})
+    );
   }
 
-  showMenu() {
-    this.setState(prevState => 
-        ({menuDisplay: !prevState.menuDisplay})
-      );
+  showAddDoc = () => {
+    this.setState (prevState => 
+      ({addDocDisplay: !prevState.addDocDisplay})
+  ,() => {
+  this.setState ({
+    loginDisplay: false,
+    addEventDisplay: false,
+  })
+  }
+  );
   }
 
-  showAddDoc() {
-    this.setState(prevState => 
-        ({addDocDisplay: !prevState.addDocDisplay})
-      );
+  showAddEvent = () => {
+    this.setState (prevState => 
+      ({addEventDisplay: !prevState.addEventDisplay})
+  ,() => {
+  this.setState ({
+    loginDisplay: false,
+    addDocDisplay: false,
+  })
   }
-
-  showAddEvent() {
-    this.setState(prevState => 
-        ({addEventDisplay: !prevState.addEventDisplay})
-      );
+  );
   }
 
   render() {
     return (
       <div className="container-fluid App">
-        <title>Home</title>
-
-        <div className="row top">
-          <header id="header">
-            <img src={logo} className="AF-insignia" alt="Air Force Insignia" />
-            
-            <div style={{float: 'left'}}>
-              <h1 className="head">Air Force</h1>
-              <h2 className="sub-head">ROTC of Arkansas</h2>
-            </div>
-          </header>
-          
-          <button className="calendar-btn" onClick={this.showCalendar} style={{display:'none'}}>CALENDAR</button>
-
-          <div className="calendar-icon" onClick={this.showCalendar} style={{display:'none'}}>event</div>
-          <div className="menu-icon" onClick={this.showMenu}>reorder</div>
-
-          <div id="nav" style={{display: this.state.menuDisplay ? 'block' : 'none'}}>
-            <a className="nav-item" href="">DOCUMENTS</a>
-            <a className="nav-item" onClick={this.showCalendar}>CALENDAR</a>
-            <a className="nav-item" onClick={this.showLogin}>LOG IN</a>
-            <a className="nav-item" onClick={this.showAddDoc}>NEW DOCUMENT</a>
-            <a className="nav-item" onClick={this.showAddEvent}>NEW EVENT</a>
-          </div>
-        </div>
-
+        <title>University of Arkansas Airforce ROTC Home</title>
         <div className="row">
+          <div className="left-content">
+            <header className="left-header">
+              <div className="logo-div">
+                <img src={logo} className="col-12 AF-insignia" alt="Air Force Insignia" />
+              </div>
+            </header>
 
-          <div className="content">
-            <div className="gallery" style={{display:'none'}}>
-              <img src={gallery}  alt="gallery"/>
+            <div className="menu-icon" onClick={this.showMenu}>reorder</div>
+
+            <ul className="col-12 nav" style={{display: this.state.menuDisplay ? 'block' : 'none'}}>
+              <li><a className="nav-item" onClick={this.showDocs}>DOCUMENTS</a></li>
+              <li><a className="nav-item" onClick={this.showCalendar}>CALENDAR</a></li>
+              <li><a className="nav-item" onClick={this.showLogin}>LOG IN</a></li>
+              <li><a className="nav-item" onClick={this.showAddDoc}>NEW DOCUMENT</a></li>
+              <li><a className="nav-item" onClick={this.showAddEvent}>NEW EVENT</a></li>
+            </ul>
+          </div>
+
+          <div nameClass="right-content">
+            <div className="right-header">
+              <h1 className="col-12 head">Air Force ROTC</h1>
+              <h2 className="col-12 sub-head">University of Arkansas</h2>
             </div>
-            
-            <div id="text-content" style={{display:'none'}}>
-              <h1 className="text-head">Core Values</h1>
-              <p className="text-body">Whoever you are and wherever you fit on the Air Force team, the Core Values are what you will live by and learn to cherish. The Core Values are much more than minimum standards. They remind us what it takes to get the mission done. They inspire us to do our very best at all times. They are the common bond among all comrades in arms, and they are the glue that unifies the Force and ties us to the great warriors and public servants of the past.</p>
+
+            <div className="main-content" style={{display: this.state.docsDisplay ? 'block' : 'none'}}>
+              <Documents />
+            </div>
+
+            <div className="main-content" style={{display: this.state.calendarDisplay ? 'block' : 'none'}}>
+              <Calendar />
+            </div>
+
+            <div className="popup" style={{display: this.state.loginDisplay ? 'block' : 'none'}}>
+              <div className="clear" onClick={this.showLogin}>clear</div>
+              <Login />
+            </div>
+
+            <div className="popup" style={{display: this.state.addDocDisplay ? 'block' : 'none'}}>
+              <div className="clear" onClick={this.showAddDoc}>clear</div>
+              <DragDrop />
+            </div>
+
+            <div className="popup" style={{display: this.state.addEventDisplay ? 'block' : 'none'}}>
+              <div className="clear" onClick={this.showAddEvent}>clear</div>
+              <AddEvent />
             </div>
           </div>
         </div>
 
-        <div className="calendar-div" style={{display: this.state.calendarDisplay ? 'block' : 'none'}}>
-          <Calendar />
-        </div>
-
-        <div className="login-popup" style={{display: this.state.loginDisplay ? 'block' : 'none'}}>
-          <div className="login-clear" onClick={this.showLogin}>clear</div>
-          <Login />
-        </div>
-
-        <div className="newDoc-popup" style={{display: this.state.addDocDisplay ? 'block' : 'none'}}>
-          <div className="newDoc-clear" onClick={this.showAddDoc}>clear</div>
-          <DragDrop />
-        </div>
-
-        <div className="newEvent-popup" style={{display: this.state.addEventDisplay ? 'block' : 'none'}}>
-          <div className="newEvent-clear" onClick={this.showAddEvent}>clear</div>
-          <AddEvent />
-        </div>
-  
         <footer>
         </footer>
 

@@ -77,7 +77,7 @@ export default class AddEvent extends Component {
               value={this.state.endDate}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit">SUBMIT</button>
         </form>
       </div>
     );
