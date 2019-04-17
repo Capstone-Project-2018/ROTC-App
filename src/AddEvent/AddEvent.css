@@ -21,9 +21,19 @@
     box-sizing: border-box;
   }
 
+  .react-datetime-picker {
+    float: right;
+    display: inline-flex;
+    border-radius: 4px;
+  }
+
+  .react-datetime-picker__inputGroup {
+    min-width: auto;
+  }
+
 button {
     background-color: var(--secondary-color-500);
-    color: white;
+    color: black;
     padding: 14px 20px;
     margin: 0 0 .75em 0;
     border: none;

@@ -73,6 +73,7 @@ export default class AddEvent extends Component {
           <div className="form-group">
             <label htmlFor="eventStartDateTime">Event Start</label>
             <DateTimePicker
+              className="react-datetime-picker react-datetime-picker_wrapper"
               onChange={this.startDateOnChange}
               value={this.state.startDate}
             />
@@ -80,6 +81,7 @@ export default class AddEvent extends Component {
           <div className="form-group">
             <label htmlFor="eventEndDateTime">Event End</label>
             <DateTimePicker
+              className="react-datetime-picker"
               onChange={this.endDateOnChange}
               value={this.state.endDate}
             />
