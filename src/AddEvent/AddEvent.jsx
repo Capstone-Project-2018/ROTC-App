@@ -30,8 +30,7 @@ export default class AddEvent extends Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit = (event) => {
     var db = firebase.firestore();
     db.collection("events").add({
       eventName: this.state.eventName,
@@ -39,12 +38,20 @@ export default class AddEvent extends Component {
       eventDescription: this.state.eventDescription,
       eventStart: this.state.startDate,
       eventEnd: this.state.endDate,
-    }).then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
+    }).then(() => {
+      this.setState({
+        eventName: "",
+        eventLocation: "",
+        eventDescription: "",
+        startDate: "",
+        endDate: "",
+      })
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     })
+    event.preventDefault();
+
   }
 
   render() {
@@ -64,14 +71,14 @@ export default class AddEvent extends Component {
             <textarea name="eventDescription" className="form-control" placeholder="Description" value={this.state.eventDescription} onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label htmlFor="eventStartDateTime">Event Start Date</label>
+            <label htmlFor="eventStartDateTime">Event Start</label>
             <DateTimePicker
               onChange={this.startDateOnChange}
               value={this.state.startDate}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="eventEndDateTime">Event End Date</label>
+            <label htmlFor="eventEndDateTime">Event End</label>
             <DateTimePicker
               onChange={this.endDateOnChange}
               value={this.state.endDate}
