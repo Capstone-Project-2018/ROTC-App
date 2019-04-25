@@ -20,15 +20,18 @@ class Calendar extends React.Component {
 
     return (
       <div className="header row flex-middle">
+
         <div className="col-8 col-start">
-        <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+          <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col-2 col-center">
           <div className="icon" onClick={this.prevMonth}>chevron_left</div>
         </div>
+
         <div className="col-2 col-end">
           <div className="icon" onClick={this.nextMonth}>chevron_right</div>
         </div>
+
       </div>
     );
 

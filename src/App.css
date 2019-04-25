@@ -9,53 +9,26 @@
 /* variables---------------------------------*/
 
 :root {
-  /* primary color == Indigo */
-  --primary-color-50:   #E8EAF6;  /* pair with text-color-dark */
-  --primary-color-100:  #C5CAE9;  /* pair with text-color-dark */
-  --primary-color-200:  #9FA8DA;  /* pair with text-color-dark */
-  --primary-color-300:  #7986CB;  /* pair with text-color-light */
-  --primary-color-400:  #5C6BC0;  /* pair with text-color-light */
-  --primary-color-500:  #3F51B5;  /* pair with text-color-light */
-  --primary-color-600:  #3949AB;  /* pair with text-color-light */
-  --primary-color-700:  #303F9F;  /* pair with text-color-light */
-  --primary-color-800:  #283593;  /* pair with text-color-light */
-  --primary-color-900:  #1A237E;  /* pair with text-color-light */
-  --primary-color-A100: #8C9EFF;  /* pair with text-color-dark */
-  --primary-color-A200: #536DFE;  /* pair with text-color-light */
-  --primary-color-A400: #3D5AFE;  /* pair with text-color-light */
-  --primary-color-A700: #304FFE;  /* pair with text-color-light */
+  /* background colors */
+  --background-dark: #F9F9F9;
+  --background-light: white;
 
-  /* secondary color == Orange */
-  --secondary-color-50:   #FFF3E0;  /* pair with text-color-dark */
-  --secondary-color-100:  #FFE0B2;  /* pair with text-color-dark */
-  --secondary-color-200:  #FFCC80;  /* pair with text-color-dark */
-  --secondary-color-300:  #FFB74D;  /* pair with text-color-dark */
-  --secondary-color-400:  #FFA726;  /* pair with text-color-dark */
-  --secondary-color-500:  #FF9800;  /* pair with text-color-dark */
-  --secondary-color-600:  #FB8C00;  /* pair with text-color-dark */
-  --secondary-color-700:  #F57C00;  /* pair with text-color-dark */
-  --secondary-color-800:  #EF6C00;  /* pair with text-color-dark */
-  --secondary-color-900:  #E65100;  /* pair with text-color-light */
-  --secondary-color-A100: #FFD180;  /* pair with text-color-dark */
-  --secondary-color-A200: #FFAB40;  /* pair with text-color-dark */
-  --secondary-color-A400: #FF9100;  /* pair with text-color-dark */
-  --secondary-color-A700: #FF6D00;  /* pair with text-color-dark */
+  /* border color */
+  --border-color: #D5D5D5;
 
-  /* grays */
-  --gray-50:   #FAFAFA;  /* pair with text-color-dark */
-  --gray-100:  #F5F5F5;  /* pair with text-color-dark */
-  --gray-200:  #EEEEEE;  /* pair with text-color-dark */
-  --gray-300:  #E0E0E0;  /* pair with text-color-dark */
-  --gray-400:  #BDBDBD;  /* pair with text-color-dark */
-  --gray-500:  #9E9E9E;  /* pair with text-color-dark */
-  --gray-600:  #757575;  /* pair with text-color-light */
-  --gray-700:  #616161;  /* pair with text-color-light */
-  --gray-800:  #424242;  /* pair with text-color-light */
-  --gray-900:  #212121;  /* pair with text-color-light */
-  
+  /* shadow color */
+  --shadow-color: #D5D5D5;
+
+  /* primary color */
+  --primary-color-dark: #2F3A56;
+  --primary-color-light: #406D96;
+
+  /* secondary color */
+  --secondary-color: #E2474B;
+
   /* text colors */
-  --text-light: #F5F5F5;
-  --text-dark:  #212121;
+  --text-light: white;
+  --text-dark:  #2F3A56;
 
 }
 
@@ -79,171 +52,135 @@ body {
   font-family:'Montserrat', sans-serif;
   letter-spacing: .03em;
   font-size: 16px;
-  background: var(--gray-100); 
+  background-color: var(--background-dark); 
   z-index: 0;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  position: relative;
-}
-
-.left-content {
-  width: 16em;
-  height: 100vh;
-  background-color: var(--primary-color-900);
-  z-index: 1000; 
-  padding: 2em;
-
+.nav {
   position: -webkit-sticky; /* Safari */
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-}
-
-.right-content {
-  padding: 5em;
+  
+  width: 18em;
+  height: 100vh;
+  background-color: var(--primary-color-dark);
+  border-right: 1px solid var(--border-color); 
+  z-index: 1000;
+  padding: 2em;
 }
 
 /*-------------------------------------------*/
 
 /* header elements---------------------------*/
 
-img.AF-insignia {
-  width: 6.5em;
-  height: 100%;
-  margin: 1em 0 5em;
-  left:50%;
-  /* translate value for transform is based off the size of the element to position div exactly center */
-  transform: translate(-50%);
-}
-
-.right-header {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-  
-  padding: 3em 2em 0;
-  background: var(--gray-100); 
-  
-  z-index: 50;
-}
-
-h1.head {
-  text-transform: uppercase;
-  font-size: 1.50em;
-  font-weight: 700;
-  text-align: left;
-  color: var(--text-dark);
-}
-
-h2.sub-head {
-  font-size: .8em;
-  font-weight: 300;
-  letter-spacing: .09em;
-  text-align: left;
-  color: var(--text-dark);
-  padding-bottom: 2em;
-
-  border-bottom: 1px solid var(--gray-500);
-}
 
 /*-------------------------------------------*/
 
 /* navigation elements-----------------------*/
 
-ul.nav {
+ul.nav-list {
   list-style-type: none;
 }
 
-li {
+li, .nav-item {
   color: var(--text-light);
   text-align: right;
-}
-
-a.nav-item {
-  font-size: .8em;
+  font-size: 1em;
   font-weight: 500;
   letter-spacing: .09em;
   line-height: 3em;
   cursor: pointer;
 }
 
-.nav-item:hover {
+li:hover, .nav-item:hover {
   text-decoration: none;
-  font-weight: 800;
-  color: var(--text-light);
+  color: var(--primary-color-light);
 }
 
-.menu-icon {
+.nav-open, .nav-close {
   display: none;
+}
+
+.logo-horizontal {
+  display: none;
+}
+
+.logo-vertical {
+  width: 6em;
+  margin: 1em 2.5em;
 }
 
 /*-------------------------------------------*/
 
-/* main content------------------------------*/
+/* page content------------------------------*/
 
-.main-content {
-  width: 500px;
-  margin: 3em;
+.content {
+  margin: 2em;
+  margin-left: 20em;
+  padding: 2em 2em;
+  background-color: var(--background-light);
+  border: 1px solid var(--background-light);
+  border-radius: .25em;
+  box-shadow: 0 0 .15em 0 var(--shadow-color);
+}
+
+.content-header {
+  color: var(--border-color);
+  text-align: center;
+  font-size: .75em;
+  font-weight: 800;
+  letter-spacing: .09em;
+  line-height: 3em;
+  margin: 1em;
+  margin-bottom: 5em;
+}
+
+.clear {
+  float: right;
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  font-size: 1.25em;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.login-clear:hover {
+  color: var(--secondary-color);
 }
 
 /*-------------------------------------------*/
 
 /* popup elements----------------------------*/
 
+.transparent-background {
+  position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:1500;
+    width:100%;
+    height:100%;
+}
+
 .popup {
-  position: fixed;
-  top: 0;
-  left: 16em;
-  width: 32em;
-  height: 100vh;
-  padding: 2em 3em;
-  background: var(--gray-50);
-  box-shadow: 0 0 .15em 0 var(--gray-600);
-  z-index: 75;
-  
-  -webkit-animation-name: popup; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
-  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: popup;
-  animation-duration: 2s;
-  animation-delay: -1s;
-}
-
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes popup {
-  0%   {left:16em;}
-  50%  {left:-32em;}
-  100% {left:16em;}
-}
-
-/* Standard syntax */
-@keyframes popup {
-  0%   {left:16em;}
-  50%  {left:-32em;}
-  100% {left:16em;}
-}
-
-.clear {
-  font-family: 'Material Icons', serif;
-  font-style: normal;
-  font-size: 1.25em;
-  text-align: right;
-  color: var(--text-dark);
-
-  cursor: pointer;
-  margin-bottom: 1em;
-}
-
-.login-clear:hover {
-  color: var(--secondary-color-500);
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* translate value for transform is based off the size of the element to position div exactly center */
+  transform: translate(-50%, -50%);
+  background-color: var(--background-light);
+  border: 1px solid var(--background-light);
+  padding: 1em;
+  z-index: 2000;
 }
 
 /*-------------------------------------------*/
@@ -258,65 +195,75 @@ a.nav-item {
 
 /* apply for canvases narrower than 992px---*/
 @media only screen and (max-width: 991px) {
-
-}
-
-/*-------------------------------------------*/
-
-/* apply for canvases narrower than 768px---*/
-@media only screen and (max-width: 767px) {
-
-  .left-content {
-    background: none;
+  .nav {
     width: 100%;
-    height: 100%;
-    padding: 0;
+    height: 3em;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color); 
   }
 
-  .logo-div {
-    background-color: var(--primary-color-900);
-  }
-
-  img.AF-insignia {
-    width: 4em;
-    margin: 1em 0 1em;
-  }
-
-  .right-header {
+  .logo-vertical {
     display: none;
   }
 
-  .menu-icon{
+  .logo-horizontal {
+    display: block;
+    width: 8em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: .5em;
+  }
+
+  .page-content {
+    margin-top: 6em;
+  }
+
+  .content {
+    margin-left: 2em;
+  }
+
+  .nav-open, .nav-close {
     font-family: 'Material Icons', serif;
-    font-style: normal;
-    text-align: center;
     font-size: 2em;
-    color: var(--text-light);
-    position: fixed;
-    top: .25em;
-    left: 1em;
-    
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga';
-  
     cursor: pointer;
     display: block;
   }
 
-  li {
+
+  li, .nav-item {
     color: var(--text-dark);
-    padding: 1em 0;
-    border-bottom: 1px solid var(--gray-300);
+  }
+  
+  .nav-item:hover {
+    color: var(--text-dark);
   }
 
-  .nav {
-    width: 100%;
+  .nav-open {
     position: fixed;
-    left: 0;
-    background: var(--gray-50);
-    padding: 0 3em;
+    top: .25em;
+    right: 1.5em;
+    color: var(--text-light);
+  }
+
+  .nav-close {
+    padding-bottom: 1em;
+    color: var(--text-dark);
+  }
+
+  .nav-list {
+    width: 40%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: .5em 3em;
+    background: var(--background-light);
+    border-left: 1px solid var(--border-color); 
     -webkit-animation-name: nav; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
     -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
@@ -324,48 +271,43 @@ a.nav-item {
     animation-duration: 2s;
     animation-delay: -1s;
   }
-  
+
   /* Safari 4.0 - 8.0 */
   @-webkit-keyframes nav {
-    0%   {left:0em;}
-    50%  {left:-100%;}
-    100% {left:0em;}
+    0%   {right:0em;}
+    50%  {right:-100%;}
+    100% {right:0em;}
   }
   
   /* Standard syntax */
   @keyframes nav {
-    0%   {left:0em;}
-    50%  {left:-100%;}
-    100% {left:0em;}
+    0%   {right:0em;}
+    50%  {right:-100%;}
+    100% {right:0em;}
   }
 
-  .main-content {
-    position: fixed;
-    width: 90%;
-    height: auto;
-    left: 50%;
-    /* translate value for transform is based off the size of the element to position div exactly center */
-    transform: translate(-50%);
-    margin: 5em 0;
-    padding: 1em;
-  }
-
-  .popup {
-    width: 80%;
-    max-width: 500px;
-    height: auto;
-    left: 50%;
-    /* translate value for transform is based off the size of the element to position div exactly center */
-    transform: translate(-50%);
-    margin: 3.5em 0;
-    padding: 1em;
-    z-index: 2000;
-
-    -webkit-animation-name: none; /* Safari 4.0 - 8.0 */
-    animation-name: none;
+  li {
+    text-align: left;
   }
 }
 
+/*-------------------------------------------*/
+
+/* apply for canvases narrower than 768px---*/
+@media only screen and (max-width: 767px) {
+  .nav-list {
+    width: 100%;
+  }
+
+  .page-content {
+    margin-top: 5em;
+  }
+
+  .content {
+    margin: 1em;
+    padding: 1em 1em;
+  }
+}
 
 /*-------------------------------------------*/
 

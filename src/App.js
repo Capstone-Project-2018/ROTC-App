@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './af_insignia.png';
+import logoVertical from './ROTCverticalLogo.svg';
+import logoHorizontal from './ROTChorizontalLogo.svg';
 import Calendar from './components/Calendar'; 
 import Login from './Login/Login';
 import AddEvent from './AddEvent/AddEvent';
@@ -11,128 +12,133 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state =  { calendarDisplay: true,
-                    docsDisplay: false,
-                    loginDisplay: false,
-                    menuDisplay: true,
-                    addDocDisplay: false,
-                    addEventDisplay: false
+    this.state =  { navigation: 'block',
+                    documents: 'block',
+                    calendar: 'block',
+                    login: 'none',
+                    addDocument: 'none',
+                    addEvent: 'none'
                   };
   }
 
-  showCalendar = () => {
-    this.setState (prevState => 
-        ({calendarDisplay: !prevState.calendarDisplay}),
-        () => {this.setState ({docsDisplay: false})}
+  showNavigation = () => {
+    this.setState ( 
+      {navigation: 'block'}
+    );
+  };
+  hideNavigation = () => {
+    this.setState (
+      {navigation: 'none'}
     );
   };
 
-  showDocs = () => {
-    this.setState (prevState => 
-        ({docsDisplay: !prevState.docsDisplay}),
-        () => {this.setState ({calendarDisplay: false})}
+  showDocuments = () => {
+    this.setState ( 
+      {documents: 'block'}
+    );
+  };
+  hideDocuments = () => {
+    this.setState (
+      {documents: 'none'}
+    );
+  };
+
+  showCalendar = () => {
+    this.setState ( 
+      {calendar: 'block'}
+    );
+  };
+  hideCalendar = () => {
+    this.setState (
+      {calendar: 'none'}
     );
   };
 
   showLogin = () => {
-    this.setState (prevState => 
-      ({loginDisplay: !prevState.loginDisplay})
-  ,() => {
-  this.setState ({
-    addDocDisplay: false,
-    addEventDisplay: false,
-  })
-  }
-  );
-  }
-
-  showMenu = () => {
-    this.setState (prevState => 
-      ({menuDisplay: !prevState.menuDisplay})
+    this.setState ( 
+      {login: 'block'}
     );
-  }
+  };
+  hideLogin = () => {
+    this.setState (
+      {login: 'none'}
+    );
+  };
 
-  showAddDoc = () => {
-    this.setState (prevState => 
-      ({addDocDisplay: !prevState.addDocDisplay})
-  ,() => {
-  this.setState ({
-    loginDisplay: false,
-    addEventDisplay: false,
-  })
-  }
-  );
-  }
+  showAddDocument = () => {
+    this.setState ( 
+      {addDocument: 'block'}
+    );
+  };
+  hideAddDocument = () => {
+    this.setState (
+      {addDocument: 'none'}
+    );
+  };
 
   showAddEvent = () => {
-    this.setState (prevState => 
-      ({addEventDisplay: !prevState.addEventDisplay})
-  ,() => {
-  this.setState ({
-    loginDisplay: false,
-    addDocDisplay: false,
-  })
-  }
-  );
-  }
+    this.setState ( 
+      {addEvent: 'block'}
+    );
+  };
+  hideAddEvent = () => {
+    this.setState (
+      {addEvent: 'none'}
+    );
+  };
 
   render() {
     return (
       <div className="container-fluid App">
         <title>University of Arkansas Airforce ROTC Home</title>
-        <div className="row">
-          <div className="left-content">
-            <header className="left-header">
-              <div className="logo-div">
-                <img src={logo} className="col-12 AF-insignia" alt="Air Force Insignia" />
-              </div>
+          <div className="nav">
+            <header className="header">
+              <img src={logoVertical} className="logo-vertical" alt="ROTC Air Force Insignia"></img>
+              <img src={logoHorizontal} className="logo-horizontal" alt="ROTC Air Force Insignia"></img>
             </header>
 
-            <div className="menu-icon" onClick={this.showMenu}>reorder</div>
+            <div className="nav-open" onClick={this.showNavigation}>reorder</div>
 
-            <ul className="col-12 nav" style={{display: this.state.menuDisplay ? 'block' : 'none'}}>
-              <li><a className="nav-item" onClick={this.showDocs}>DOCUMENTS</a></li>
-              <li><a className="nav-item" onClick={this.showCalendar}>CALENDAR</a></li>
+            <ul className="nav-list" style={{display: this.state.navigation}}>
+              <div className="nav-close" onClick={this.hideNavigation}>reorder</div>
+              <li><a href="#documents" className="nav-item" onClick={this.showDocuments}>DOCUMENTS</a></li>
+              <li><a href="#calendar" className="nav-item" onClick={this.showCalendar}>CALENDAR</a></li>
               <li><a className="nav-item" onClick={this.showLogin}>LOG IN</a></li>
-              <li><a className="nav-item" onClick={this.showAddDoc}>NEW DOCUMENT</a></li>
+              <li><a className="nav-item" onClick={this.showAddDocument}>NEW DOCUMENT</a></li>
               <li><a className="nav-item" onClick={this.showAddEvent}>NEW EVENT</a></li>
             </ul>
           </div>
 
-          <div nameClass="right-content">
-            <div className="right-header">
-              <h1 className="col-12 head">Air Force ROTC</h1>
-              <h2 className="col-12 sub-head">University of Arkansas</h2>
-            </div>
-
-            <div className="main-content" style={{display: this.state.docsDisplay ? 'block' : 'none'}}>
-              <Documents />
-            </div>
-
-            <div className="main-content" style={{display: this.state.calendarDisplay ? 'block' : 'none'}}>
+          <div className="page-content">
+            <div id="calendar" className="content" style={{display: this.state.calendar}}>
+              <span className="content-header">CALENDAR</span>
               <Calendar />
             </div>
 
-            <div className="popup" style={{display: this.state.loginDisplay ? 'block' : 'none'}}>
-              <div className="clear" onClick={this.showLogin}>clear</div>
+            <div id="documents" className="content" style={{display: this.state.documents}}>
+              <span className="content-header">DOCUMENTS</span>
+              <Documents />
+            </div>
+
+            <div className="popup" style={{display: this.state.login}}>
+              <div className="clear" onClick={this.hideLogin}>clear</div>
               <Login />
             </div>
-
-            <div className="popup" style={{display: this.state.addDocDisplay ? 'block' : 'none'}}>
-              <div className="clear" onClick={this.showAddDoc}>clear</div>
+            <div className="transparent-background" style={{display: this.state.login}}></div>
+            
+            <div className="popup" style={{display: this.state.addDocument}}>
+              <div className="clear" onClick={this.hideAddDocument}>clear</div>
               <DragDrop />
             </div>
-
-            <div className="popup" style={{display: this.state.addEventDisplay ? 'block' : 'none'}}>
-              <div className="clear" onClick={this.showAddEvent}>clear</div>
-              <AddEvent />
+            <div className="transparent-background" style={{display: this.state.addDocument}}></div>
+            
+            <div className="popup" style={{display: this.state.addEvent}}>
+              <div className="clear" onClick={this.hideAddEvent}>clear</div>
+                <AddEvent />
             </div>
+            <div className="transparent-background" style={{display: this.state.addEvent}}></div>
+
           </div>
-        </div>
-
-        <footer>
-        </footer>
-
       </div>
     );
   }

@@ -13,16 +13,21 @@
   justify-content: flex-start;
   text-align: left;
   font-size: 1em;
+  padding: 1em 1.5em 0;
 }
   
 .col-center {
   justify-content: center;
   text-align: center;
+  font-size: 1em;
+  padding: 1em 1.5em 0;
 }
   
 .col-end {
   justify-content: flex-end;
   text-align: right;
+  font-size: 1em;
+  padding: 1em 1.5em 0;
 }
   
 /*-------------------------------------------*/  
@@ -38,7 +43,7 @@
 .header .icon:hover {
   transform: scale(1.75);
   transition: .25s ease-out;
-  color: var(--secondary-color-500);
+  color: var(--secondary-color);
 }
 
 .icon {
@@ -70,18 +75,19 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  padding-top: calc(72%/7); /* 1:1 cell ratio */
+  padding-top: calc(44%/7); /* 1:1 cell ratio */
   transition: 0.25s ease-out;
   border-radius: 50%;
 }
   
 .body .cell:hover {
-  background: var(--gray-300);
+  background: var(--shadow-color);
   transition: 0.5s ease-out;
+  color: var(--text-light);
 }
 
 .body .selected {
-  background-color: var(--secondary-color-500);
+  background-color: var(--secondary-color);
   color: var(--text-light);
 }
   
@@ -97,14 +103,14 @@
 }
   
 .body .disabled {
-  color: var(--gray-400);
+  color: var(--shadow-color);
   pointer-events: none;
 }
   
 .body .col {
-  margin: 2%;
+  margin: 4%;
   flex-grow: 0;
-  flex-basis: calc(72%/7);
+  flex-basis: calc(44%/7);
   width: calc(100%/7);
 }
 
@@ -137,7 +143,7 @@
 .event-name {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 .event-descript {
@@ -165,6 +171,28 @@
 /* apply for canvases narrower than 768px---*/
 @media only screen and (max-width: 767px) {
 
+  .calendar .days {
+    font-size: .5em;
+  }
+  
+  .body .cell {
+    padding-top: calc(72%/7); /* 1:1 cell ratio */
+  }
+
+  .body .cell .number {
+    font-size: .5em;
+  }
+    
+  .body .col {
+    margin: 2%;
+    flex-basis: calc(72%/7);
+    width: calc(100%/7);
+  }
+
+  .col-start, .col-center, .col-end {
+    font-size: .75em;
+    padding: 0 1em;
+  }
 }
 
 /*-------------------------------------------*/
