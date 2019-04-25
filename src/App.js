@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logoVertical from './ROTCverticalLogo.svg';
 import logoHorizontal from './ROTChorizontalLogo.svg';
-import Calendar from './components/Calendar'; 
+import Calendar from './Calendar/Calendar.jsx'; 
 import Login from './Login/Login';
-import AddEvent from './AddEvent/AddEvent';
+import AddEvent from './AddEvent/AddEvent.jsx';
 import DragDrop from './DragDrop/DragDrop';
 import Documents from './Documents/Documents';
 import './App.css';
