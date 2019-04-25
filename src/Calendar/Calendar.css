@@ -1,5 +1,10 @@
 /* grid elements-----------------------------*/
  
+.calendar {
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
 .row-middle {
   align-items: center;
 }
@@ -12,22 +17,23 @@
 .col-start {
   justify-content: flex-start;
   text-align: left;
-  font-size: 1em;
-  padding: 1em 1.5em 0;
+  font-size: 16px;
+  padding: 1em 1.5em;
+}
+
+.col-end {
+  justify-content: flex-end;
+  text-align: right;
+  font-size: 16px;
+  padding: 1em 1.5em;
 }
   
 .col-center {
   justify-content: center;
   text-align: center;
-  font-size: 1em;
-  padding: 1em 1.5em 0;
-}
-  
-.col-end {
-  justify-content: flex-end;
-  text-align: right;
-  font-size: 1em;
-  padding: 1em 1.5em 0;
+  font-size: .75em;
+  padding: 2em 1.5em 0;
+  border-top: 1px solid var(--border-color);
 }
   
 /*-------------------------------------------*/  
@@ -75,7 +81,7 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  padding-top: calc(44%/7); /* 1:1 cell ratio */
+  padding-top: calc(58%/7); /* 1:1 cell ratio */
   transition: 0.25s ease-out;
   border-radius: 50%;
 }
@@ -108,9 +114,9 @@
 }
   
 .body .col {
-  margin: 4%;
+  margin: 3%;
   flex-grow: 0;
-  flex-basis: calc(44%/7);
+  flex-basis: calc(58%/7);
   width: calc(100%/7);
 }
 
@@ -118,14 +124,11 @@
 
 /* days elements-----------------------------*/ 
   
-.calendar .days {
+.days {
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
-  font-size: .75em;
-  color: var(--text-dark);
   padding: 2em 0 1em;
-  border-bottom: 1px solid var(--gray-500);
 }
   
 /*-------------------------------------------*/
@@ -133,10 +136,9 @@
 /* events elements---------------------------*/ 
   
 .events {
-  padding: 2em 1em 2em;
-  border-top: 1px solid var(--gray-500);
+  padding: 2em 1em;
+  border-top: 1px solid var(--border-color);
   font-family:'Montserrat', sans-serif;
-  margin-bottom: 2em;
   line-height: 1em;
 }
 
@@ -147,7 +149,7 @@
 }
 
 .event-descript {
-  font-size: 1em;
+  font-size: .8em;
   font-weight: 300;
   padding-bottom: 1em;
 }
@@ -168,9 +170,24 @@
 
 /*-------------------------------------------*/
 
+/* apply for canvases narrower than 992px---*/
+@media only screen and (max-width: 991px) {
+
+}
+
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+
 /* apply for canvases narrower than 768px---*/
 @media only screen and (max-width: 767px) {
 
+}
+
+/*-------------------------------------------*/
+
+/* iPhone, Android devices-------------------*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .calendar .days {
     font-size: .5em;
   }
@@ -191,15 +208,8 @@
 
   .col-start, .col-center, .col-end {
     font-size: .75em;
-    padding: 0 1em;
+    padding: 1em 1em;
   }
-}
-
-/*-------------------------------------------*/
-
-/* iPhone, Android devices-------------------*/
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-
 }
 
 /*-------------------------------------------*/

@@ -59,32 +59,32 @@ export default class AddEvent extends Component {
       <div className="AddEvent">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="eventName">Event Name</label>
+            <label className="eventName">EVENT NAME</label>
             <input type="text" className="form-control" name="eventName" placeholder="Name" value={this.state.eventName} onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label htmlFor="eventLocation">Event Location</label>
+            <label className="eventLocation">EVENT LOCATION</label>
             <input type="text" className="form-control" name="eventLocation" placeholder="Location" value={this.state.eventLocation} onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label htmlFor="eventDescription">Event Description</label>
+            <label className="eventDescription">EVENT DESCRIPTION</label>
             <textarea name="eventDescription" className="form-control" placeholder="Description" value={this.state.eventDescription} onChange={this.handleChange}/>
           </div>
           <div className="form-group">
-            <label htmlFor="eventStartDateTime">Event Start</label>
-            <DateTimePicker
-              className="react-datetime-picker react-datetime-picker_wrapper"
-              onChange={this.startDateOnChange}
-              value={this.state.startDate}
-            />
+            <label className="eventStartDateTime">EVENT START</label>
+              <DateTimePicker
+                className="react-datetime-picker react-datetime-picker_wrapper"
+                onChange={this.startDateOnChange}
+                value={this.state.startDate}
+              />
           </div>
           <div className="form-group">
-            <label htmlFor="eventEndDateTime">Event End</label>
-            <DateTimePicker
-              className="react-datetime-picker"
-              onChange={this.endDateOnChange}
-              value={this.state.endDate}
-            />
+            <label className="eventEndDateTime">EVENT END</label>
+              <DateTimePicker
+                className="react-datetime-picker"
+                onChange={this.endDateOnChange}
+                value={this.state.endDate}
+              />
           </div>
           <button type="submit">SUBMIT</button>
         </form>

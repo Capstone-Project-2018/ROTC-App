@@ -1,24 +1,20 @@
 .AddEvent {
     font-family:'Montserrat', sans-serif;
-    font-size: 16px;
     font-size: .8em;
     letter-spacing: .09em;
   }
   
   .form-group {
-    font-weight: 500;
     margin: 0;
     padding: 0;
   }
   
   .form-group {
-    font-weight: 300;
+    font-weight: 500;
     width: 100%;
     padding: .75em 1em;
     display: inline-block;
     margin: .25em 0 2em;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
   }
 
   .react-datetime-picker {
@@ -27,18 +23,28 @@
     border-radius: 4px;
   }
 
+  .form-control {
+    font-weight: 300;
+    font-size: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+
   .react-datetime-picker__inputGroup {
     min-width: auto;
   }
 
 button {
-    background-color: var(--secondary-color-500);
-    color: black;
-    padding: 14px 20px;
-    margin: 0 0 .75em 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 14px 20px;
+  margin: 0 0 .75em 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid var(--secondary-color);
+  border-radius: .25em;
   }
 
 button:hover {

@@ -12,7 +12,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state =  { navigation: 'block',
+    this.state =  { navigation: 'none',
                     documents: 'block',
                     calendar: 'block',
                     login: 'none',
@@ -34,7 +34,9 @@ class App extends Component {
 
   showDocuments = () => {
     this.setState ( 
-      {documents: 'block'}
+      { documents: 'block',
+        navigation: 'none'
+      }
     );
   };
   hideDocuments = () => {
@@ -45,7 +47,9 @@ class App extends Component {
 
   showCalendar = () => {
     this.setState ( 
-      {calendar: 'block'}
+      { calendar: 'block',
+        navigation: 'none'
+      }
     );
   };
   hideCalendar = () => {
@@ -56,7 +60,9 @@ class App extends Component {
 
   showLogin = () => {
     this.setState ( 
-      {login: 'block'}
+      { login: 'block',
+        navigation: 'none'
+      }
     );
   };
   hideLogin = () => {
@@ -67,7 +73,9 @@ class App extends Component {
 
   showAddDocument = () => {
     this.setState ( 
-      {addDocument: 'block'}
+      { addDocument: 'block',
+        navigation: 'none'
+      }
     );
   };
   hideAddDocument = () => {
@@ -78,7 +86,9 @@ class App extends Component {
 
   showAddEvent = () => {
     this.setState ( 
-      {addEvent: 'block'}
+      { addEvent: 'block',
+        navigation: 'none' 
+      }
     );
   };
   hideAddEvent = () => {
@@ -98,6 +108,14 @@ class App extends Component {
             </header>
 
             <div className="nav-open" onClick={this.showNavigation}>reorder</div>
+
+            <ul className="desktop-nav">
+              <li><a href="#documents" className="nav-item" onClick={this.showDocuments}>DOCUMENTS</a></li>
+              <li><a href="#calendar" className="nav-item" onClick={this.showCalendar}>CALENDAR</a></li>
+              <li><a className="nav-item" onClick={this.showLogin}>LOG IN</a></li>
+              <li><a className="nav-item" onClick={this.showAddDocument}>NEW DOCUMENT</a></li>
+              <li><a className="nav-item" onClick={this.showAddEvent}>NEW EVENT</a></li>
+            </ul>
 
             <ul className="nav-list" style={{display: this.state.navigation}}>
               <div className="nav-close" onClick={this.hideNavigation}>reorder</div>
@@ -121,20 +139,26 @@ class App extends Component {
             </div>
 
             <div className="popup" style={{display: this.state.login}}>
-              <div className="clear" onClick={this.hideLogin}>clear</div>
+              <div className="exit-popup">
+                <p className="clear" onClick={this.hideLogin}>clear</p>
+              </div>
               <Login />
             </div>
             <div className="transparent-background" style={{display: this.state.login}}></div>
             
             <div className="popup" style={{display: this.state.addDocument}}>
-              <div className="clear" onClick={this.hideAddDocument}>clear</div>
+              <div className="exit-popup">
+                <p className="clear" onClick={this.hideAddDocument}>clear</p>
+              </div>
               <DragDrop />
             </div>
             <div className="transparent-background" style={{display: this.state.addDocument}}></div>
             
             <div className="popup" style={{display: this.state.addEvent}}>
-              <div className="clear" onClick={this.hideAddEvent}>clear</div>
-                <AddEvent />
+              <div className="exit-popup">
+                <p className="clear" onClick={this.hideAddEvent}>clear</p>
+              </div>
+              <AddEvent />
             </div>
             <div className="transparent-background" style={{display: this.state.addEvent}}></div>
 

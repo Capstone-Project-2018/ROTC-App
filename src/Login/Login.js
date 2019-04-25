@@ -43,15 +43,15 @@ export default class Login extends Component {
           <form className="container" onSubmit={this.handleSubmit}>
             <label className="username">USERNAME</label>
             <br/>
-            <input type="text" placeholder="enter username" id="username" value={this.state.username} onChange={this.handleChange} autoFocus required />
+            <input type="text" placeholder="Username" id="username" value={this.state.username} onChange={this.handleChange} autoFocus required />
             <br/>
             <label className="password">PASSWORD</label>
             <br/>
-            <input type="password" placeholder="enter password" id="password" value={this.state.password} onChange={this.handleChange} required />
+            <input type="password" placeholder="Password" id="password" value={this.state.password} onChange={this.handleChange} required />
             <br/> 
             <br/> 
 
-            <button type="submit" onClick={this.signUpSubmit}>LOG IN</button>
+            <button className = "submit" type="submit" onClick={this.signUpSubmit}>LOG IN</button>
             <br/>
 
             <span className="password-retrieve"><a href="#">Forgot password?</a></span>

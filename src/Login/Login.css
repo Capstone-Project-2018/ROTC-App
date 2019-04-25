@@ -17,31 +17,31 @@ input[id=username], input[id=password] {
   padding: .75em 1em;
   display: inline-block;
   margin: .25em 0 2em;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   box-sizing: border-box;
 }
 
-button {
+.submit {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--text-light);
   padding: 14px 20px;
   margin: 0 0 .75em 0;
   border: none;
   cursor: pointer;
   width: 100%;
+  border: 1px solid var(--secondary-color);
+  border-radius: .25em;
 }
 
-button:hover {
+.submit:hover {
   opacity: 0.8;
 }
 
 .password-retrieve {
   letter-spacing: .09em;
-  color: var(--primary-color-900);
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  color: var(--secondary-color);
   cursor: pointer;
-}
-
-.password-retrieve:hover {
-  text-decoration: none;
-  font-weight: 800;
 }

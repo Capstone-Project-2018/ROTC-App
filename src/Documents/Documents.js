@@ -46,12 +46,12 @@ export default class Documents extends Component {
         </div>
   );
         return(
-            <div className="documents">
+            <span className="documents">
                 <h1 className="docs-header">Cadet Documents</h1>
                 <div className="files">
                 {files}
                 </div>
-            </div>
+            </span>
         );
     }
 }

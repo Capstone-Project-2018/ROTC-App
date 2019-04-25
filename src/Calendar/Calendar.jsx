@@ -24,7 +24,7 @@ class Calendar extends React.Component {
         <div className="col-8 col-start">
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
-        <div className="col-2 col-center">
+        <div className="col-2 col-end">
           <div className="icon" onClick={this.prevMonth}>chevron_left</div>
         </div>
 
