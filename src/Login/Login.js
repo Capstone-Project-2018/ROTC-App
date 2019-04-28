@@ -6,7 +6,6 @@ import "./Login.css";
 export default class Login extends Component {
     constructor(props) {
       super(props);
-  
       this.state = {
         username: "",
         password: ""
@@ -28,12 +27,17 @@ export default class Login extends Component {
     }
 
     signUpSubmit = event => {
-      firebase.auth().signInWithEmailAndPassword(this.username, this.password).catch(function(error) {
-        
+      firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.password)
+      .then(() => {
+        this.props.hide();
+        this.props.admin();
+      })
+      .catch(function(error) {   
         // Handle Errors here.
-        console.log("working");
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log(errorMessage);
+        alert("Sorry your username and password are incorrect.")
       });
     }
 
