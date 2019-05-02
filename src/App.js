@@ -196,8 +196,6 @@ class App extends Component {
                 <li><a href="#documents" className="nav-item" onClick={this.showDocuments}>DOCUMENTS</a></li>
                 <li><a href="#calendar" className="nav-item" onClick={this.showCalendar}>CALENDAR</a></li>
                 <li><a className="nav-item" onClick={this.showLogin}>LOG IN</a></li>
-                <li><a className="nav-item" onClick={this.showAddDocument}>NEW DOCUMENT</a></li>
-                <li><a className="nav-item" onClick={this.showAddEvent}>NEW EVENT</a></li>
               </ul>
             </div>
 
